@@ -1,3 +1,12 @@
+# 🛒 Aplicativo Web Para la Pasteleria Aurora – Proyecto De Herramientas de Desarrollo
+---
+## 📘 Descripción del Proyecto
+La pastelería Aurora presenta dificultades en la gestión integral de sus operaciones debido al uso de procesos manuales poco eficientes. Actualmente, la toma de pedidos, el control del inventario y la atención al cliente se realizan sin un sistema centralizado, lo que genera errores frecuentes en los pedidos, retrasos en las entregas y desconocimiento sobre la disponibilidad real de productos.
+
+Asimismo, los clientes carecen de una plataforma digital que les permita visualizar el catálogo, personalizar productos según sus preferencias o recibir notificaciones sobre el estado de sus pedidos. Esta carencia tecnológica reduce la experiencia del cliente, limita el alcance del negocio a nivel competitivo y sobrecarga al personal con tareas operativas repetitivas.
+
+En consecuencia, la falta de automatización frena el crecimiento sostenible de la empresa, disminuye la satisfacción del cliente y afecta la capacidad de la pastelería para adaptarse a las nuevas demandas del mercado.
+
 ## Roles y Crédito
 
 | Nombre   | Rol                          | Funciones                                                                 |
