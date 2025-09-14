@@ -9,10 +9,14 @@ Asimismo, los clientes carecen de una plataforma digital que les permita visuali
 En consecuencia, la falta de automatización frena el crecimiento sostenible de la empresa, disminuye la satisfacción del cliente y afecta la capacidad de la pastelería para adaptarse a las nuevas demandas del mercado.
 
 ## Tecnologias usadas
-
-
-
-
+- **Java 17** → Lenguaje principal para la lógica de negocio del sistema.  
+- **Spring Boot** → Framework para el desarrollo del backend, simplifica la configuración y ejecución de la aplicación.  
+- **Maven** → Herramienta de gestión y construcción de dependencias.  
+- **MySQL** → Sistema de gestión de base de datos relacional para almacenar la información de productos, usuarios y pedidos.  
+- **Thymeleaf** → Motor de plantillas utilizado para generar las vistas dinámicas en el frontend.  
+- **HTML5, CSS3 y JavaScript** → Tecnologías base para la interfaz gráfica y diseño responsivo.  
+- **Git & GitHub** → Sistema de control de versiones y repositorio remoto para trabajo colaborativo.  
+- **Visual Studio Code / IntelliJ IDEA** → Entornos de desarrollo integrados utilizados por el equipo.  
 
 ## Instalación y Ejecución
 
