@@ -128,11 +128,21 @@ git commit -m "descripción clara de los cambios realizados"
 # 5. Subir tu trabajo a tu rama remota
 git push origin <mi_rama>
 ```
-### 4. Unir cambios a main (cuando terminas una funcionalidad)
+
+### 4.Aplicamos fork
+
+
+
+
+
+
+
+
+### 5. Unir cambios a main (cuando terminas una funcionalidad)
 * Recomendado: Crear un Pull Request (PR) desde GitHub para que el equipo pueda revisar los cambios antes de integrarlos a la rama principal.
 * En el PR, describir claramente qué funcionalidad se implementó y qué cambios se realizaron.
 * Esperar la aprobación de al menos un compañero antes de hacer el merge.
-### 5. Después de un Pull Request (PR) aceptado
+### 6. Después de un Pull Request (PR) aceptado
 ```bash
 # 1. Cambiar a tu rama de trabajo
 git checkout <mi_rama>
