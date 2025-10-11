@@ -7,7 +7,7 @@ y este proyecto sigue el esquema de versionado [SemVer](https://semver.org/lang/
 
 ---
 
-## [v1.0.0] - 2025-10-08
+## [v1.0.0] 
 ### 🎉 Versión inicial del proyecto
 
 #### 🚀 Nuevas funcionalidades
