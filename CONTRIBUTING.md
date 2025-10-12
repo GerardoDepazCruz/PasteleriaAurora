@@ -74,8 +74,6 @@ Recomendado: hacerlo con un Pull Request (PR) desde GitHub, para que los demás 
 El Pull Request(PR) de cualquiera de los integrante se enviara como solicitud al creador de repositorio para poder aplicar el cambio en el main.
 Una vez aprobado el PR, el integrante debe actualizar su rama local ejecutando: git pull origin main para mantener sincronizado su entorno.
 
-### Flujo de trabajo colaborativo GitHub
-
 ## Revisión cruzada de PRs
 
 Antes de que el líder apruebe un **Pull Request (PR)**, otro integrante del equipo debe revisarlo.
@@ -115,20 +113,31 @@ Antes de que el líder apruebe un **Pull Request (PR)**, otro integrante del equ
 
 ### Tag Rules
 
-Cada versión estable se etiqueta con el siguiente formato:
+Cada versión estable se etiqueta con el siguiente formato utilizando **versionado semántico**:
 
-Usa una numeración semántica (muy común en proyectos):
+| Tipo | Descripción | Ejemplo |
+|------|--------------|----------|
+| **v1.0.0** | Primera versión estable | `v1.0.0` |
+| **v1.1.0** | Pequeñas mejoras o nuevas funciones | `v1.1.0` |
+| **v2.0.0** | Cambios grandes o rediseño total | `v2.0.0` |
 
-v1.0 → primera versión estable
-v1.1 → pequeña mejora o nueva función
-v2.0 → cambios grandes o rediseño
+**Guía:**
+- **major:** cambios grandes o incompatibles con versiones anteriores.  
+- **minor:** nuevas funcionalidades que no rompen compatibilidad.  
+- **patch:** correcciones menores o bugs.
+
+**Solo el líder del proyecto (Gerardo)** puede crear o aprobar tags oficiales.
+
+**Comandos para crear un tag:**
 
 ```bash
+# Crear un tag con descripción
+git tag -a v1.0.0 -m "Versión inicial estable"
 
-git tag -a v1.0 -m "Descripción de la versión"
-git push origin v1.0
-
+# Subir el tag al repositorio remoto
+git push origin v1.0.0
 ```
+
 ## Uso de Forks, upstream y flujo sincronizado
 
 ### Flujo cambiando a frok y luego el nuevo flujo de trabajo con fork (usamos upstream)
@@ -180,8 +189,6 @@ git commit -m "mensaje claro de lo que hiciste"
 # 6. Subir tu trabajo a tu fork remoto (tu propio repositorio)
 git push origin <mi_rama>
 ```
-
-## Gestión de Issues, Milestones y Tablero de Proyecto
 
 ## Gestión de Issues, Milestones y Tablero de Proyecto
 
