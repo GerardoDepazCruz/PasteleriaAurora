@@ -133,84 +133,84 @@ git push origin <mi_rama>
 ```
 
 ### 4.Aplicamos fork
-#### **Paso 1.**
+#### **Paso 1:**
 ```bash
 Primero debo ingresar al GitHub y me dirijo hacia la parte donde dice “Frok” y tengo que hacerle clic.
 ```
 
 ![paso1](img/figura1-fork.png)
 
-#### **Paso 2.**
+#### **Paso 2:**
 ```bash
 Ahora cuando hago clic me sale esas opciones, se debe seleccionar donde dice “Create a new fork”.
 ```
 
 ![paso2](img/figura2-fork.png)
 
-#### **Paso 3.**
+#### **Paso 3:**
 ```bash
 Luego me sale la siguiente ventana donde debemos verificar que este bien el nombre del repositorio y también se puede agregar alguna descripción y luego se debe hacer clic en el botón “Create fork”.
 ```
 
 ![paso3](img/figura3-fork.png)
 
-#### **Paso 4.**
+#### **Paso 4:**
 ```bash
 Bien ahora nos sale esta ventana donde ya podemos ver que hemos creado el fork ya que nos sale el nombre de “bifurcado de Gerardo/PasteleriaAurora” que es el repositorio al que hicimos el fork.
 ```
 
 ![paso4](img/figura4-fork.png)
 
-#### **Paso 5.**
+#### **Paso 5:**
 ```bash
 Luego tenemos que hacer clic en el botón que dice “código”, ahora copiamos la url para hacer la clonación en el visual.
 ```
 
 ![paso5](img/figura5-fork.png)
 
-#### **Paso 6.**
+#### **Paso 6:**
 ```bash
 Luego debemos entrar al visual studio code, entro a la carpeta del proyecto y tengo que eliminar la referencia al repositorio remoto actual llamado origin. Luego debo indicar que el destino principal (origin) será a mi propio fork. Después, debo sincronizar los cambios del líder con mi fork. Al último, verifico todos los remotos que he configurado.
 ```
 
 ![paso6](img/figura6-fork.png)
 
-#### **Paso 7.**
+#### **Paso 7:**
 ```bash
 Luego debo agregar el comando de “git fecht upstream” para traer todos los cambios, pero aun no se mezcla con mi rama.
 ```
 
 ![paso7](img/figura7-fork.png)
 
-#### **Paso 8.**
+#### **Paso 8:**
 ```bash
 Después debo agregar el comando de “git merge upstream/main” para fusionar los cambios que traje con mi rama.
 ```
 
 ![paso8](img/figura8-fork.png)
 
-#### **Paso 9.**
+#### **Paso 9:**
 ```bash
 En esta parte se está agregando el CHANGELOG.
 ```
 
 ![paso9](img/figura9-fork.png)
 
-#### **Paso 10.**
+#### **Paso 10:**
 ```bash
 Luego se debe subir los cambios que se realizó. 
 ```
 
 ![paso10](img/figura10-fork.png)
 
-#### **Paso 11.**
+#### **Paso 11:**
 ```bash
 Ahora me debo dirigir a mi GitHub y hacer clic en la opción de Pull request. Luego hago clic en el botón “New pull request”.
 ```
 
 ![paso11](img/figura11-fork.png)
 
-#### **Paso 12.**
+#### **Paso 12:**
 ```bash
 Luego me sale la ventana donde se puede observar la comparación y lo que hice. Luego hago clic en la opción de “Create pull request”.
 ```
@@ -224,56 +224,56 @@ Me sale la ventana para poder crear el pull request. Para ello selecciono el bot
 
 ![paso13](img/figura13-fork.png)
 
-#### **Paso 14.**
+#### **Paso 14:**
 ```bash
 Después hago clic en la opción de Fusionar solicitud de extracción.
 ```
 
 ![paso14](img/figura14-fork.png)
 
-#### **Paso 15.**
+#### **Paso 15:**
 ```bash
 Me sale la ventana para confirmar la fusión.
 ```
 
 ![paso15](img/figura15-fork.png)
 
-#### **Paso 16.**
+#### **Paso 16:**
 ```bash
 Luego me sale la ventana donde me indica que la fusión esta bloqueado. Para ello el líder debe dar el permiso para fusionar.
 ```
 
 ![paso16](img/figura16-fork.png)
 
-#### **Paso 17.**
+#### **Paso 17:**
 ```bash
 Aquí se observa que el líder del repositorio debe verificar si acepta o rechaza la fusión, en este caso se debe hacer clic en aceptar y enviar cambios.
 ```
 
 ![paso17](img/figura17-fork.jpg)
 
-#### **Paso 18.**
+#### **Paso 18:**
 ```bash
 Luego le sale esta ventana donde debe aceptar la solicitud de extracción de fusión.
 ```
 
 ![paso18](img/figura18-fork.jpg)
 
-#### **Paso 19.**
+#### **Paso 19:**
 ```bash
 Por último, confirma la fusión.
 ```
 
 ![paso19](img/figura19-fork.jpg)
 
-#### **Paso 20.**
+#### **Paso 20:**
 ```bash
 En esta ventana sale el mensaje que deja el líder, indicando si hay alguna corrección y si ya está bien.
 ```
 
 ![paso20](img/figura20-fork.png)
 
-#### **Paso 21.**
+#### **Paso 21:**
 ```bash
 Por último, ya se observa el archivo que se agrego en el repositorio del líder.
 ```
