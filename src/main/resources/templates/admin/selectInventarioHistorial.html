@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seleccionar Inventario para Historial</title>
+</head>
+<body>
+
+<div th:replace="admin/fragments :: menuVertical"></div>
+
+<div style="margin-left: 300px; padding: 20px;">
+    <h2>Seleccione Inventario para Ver Historial</h2>
+
+    <form th:action="@{/admin/inventario/historial}" method="post">
+        <select name="inventarioId" required>
+            <option value="" disabled selected>-- Seleccione un inventario --</option>
+            <option th:each="inv : ${inventarios}" th:value="${inv.id}" th:text="${inv.producto.nombre}"></option>
+        </select>
+        <button type="submit">Ver Historial</button>
+    </form>
+</div>
+
+<div th:replace="admin/fragments :: footer"></div>
+
+</body>
+</html>
