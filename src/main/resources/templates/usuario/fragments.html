@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fragments</title>
+</head>
+<body>
+
+<!-- Fragmento Navbar -->
+<div th:fragment="navbar">
+    <nav>
+        <a th:href="@{/inicio}">Inicio</a> |
+        <a th:href="@{/catalogo}">Catálogo</a> |
+        <a th:href="@{/personalizado}">Personalizado</a> |
+        <a th:href="@{/nosotros}">Nosotros</a> |
+        <a th:href="@{/contacto}">Contacto</a> |
+        <a th:href="@{/carrito}">🛒 Carrito</a> |
+        <a th:href="@{/logout}">Cerrar Sesión</a>
+    </nav>
+</div>
+
+
+<!-- Fragmento Footer -->
+<div th:fragment="footer">
+    <footer>
+        Pastelería © 2025 - Todos los derechos reservados
+    </footer>
+</div>
+
+</body>
+</html>
