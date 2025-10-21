@@ -71,6 +71,7 @@ public class UsuarioController {
     public String nosotros() {
         return "usuario/nosotros";
     }
+    
 
     
     @GetMapping("/login")
