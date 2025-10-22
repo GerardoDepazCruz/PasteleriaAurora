@@ -1,6 +1,6 @@
 # Guía de Contribución - Proyecto Colaborativo (Control de Versiones)
 
-Gracias por contribuir al proyecto. Este documento explica *cómo trabajaremos en equipo usando Git y GitHub*, manteniendo un flujo de trabajo ordenado y colaborativo.
+Gracias por contribuir al proyecto. Este documento explica **cómo trabajaremos en equipo usando Git y GitHub**, manteniendo un flujo de trabajo ordenado y colaborativo.
 
 ---
 
@@ -8,11 +8,11 @@ Gracias por contribuir al proyecto. Este documento explica *cómo trabajaremos e
 
 | Integrante | Rol principal |
 |-------------|----------------|
-| *Gerardo* | Líder del proyecto, creador del repositorio, configuracion general y gesstior de Pull Requests |
-| *Josue* | Desarrollador backend |
-| *Alexander* | Encargado de resolver conflictos, documentacion del proeycto y testeo |
-| *Ana* | Diseñadora de la interfaz principal del sistema |
-| *Jennifer* | Responsable de reportes y gestión de la base de datos |
+| **Gerardo** | Líder del proyecto, creador del repositorio, configuración del repositorio y gestor de PR |
+| **Josue** | Desarrollador backend  |
+| **Alexander** | Encargado de resolver conflictos, documentación del proyecto y Testing |
+| **Ana** | Diseñadora de la interfaz principal del sistema |
+| **Jennifer** | Responsable de reportes y gestión de la base de datos |
 
 
 ---
@@ -21,32 +21,32 @@ Gracias por contribuir al proyecto. Este documento explica *cómo trabajaremos e
 
 Cada integrante trabaja en su propia rama siguiendo este formato:
 
-*Ejemplos reales del equipo:*
-- feature/gerardo-login → (líder, backend del módulo de login)  
-- chore/josue-carrito → (backend - mantenimiento del módulo de carrito de compras)  
-- fix/alexander-conflictos → (gestión y resolución de conflictos en Git/GitHub)  
-- docs/ana-interfaz → (diseño de la interfaz y documentación visual)  
-- feature/jennifer-reportes → (reportes y base de datos)
+**Ejemplos reales del equipo:**
+- `feature/gerardo-login` → (líder, backend del módulo de login)  
+- `chore/josue-carrito` → (backend - mantenimiento del módulo de carrito de compras)  
+- `fix/alexander-conflictos` → (gestión y resolución de conflictos en Git/GitHub)  
+- `docs/ana-interfaz` → (diseño de la interfaz y documentación visual)  
+- `feature/jennifer-reportes` → (reportes y base de datos)
 
 ---
 
 ## Formato de mensajes de commit
 
-Usaremos mensajes *claros, atómicos y con prefijo semántico*:
+Usaremos mensajes **claros, atómicos y con prefijo semántico**:
 
 | Prefijo | Descripción | Ejemplo |
 |----------|--------------|----------|
-| feat: | Nueva funcionalidad | feat: agregar validación al login |
-| fix: | Corrección de error | fix: corregir error en formulario de registro |
-| docs: | Cambios en documentación | docs: actualizar README con nuevas capturas |
-| chore: | Mantenimiento o limpieza | chore: actualizar .gitignore |
+| `feat:` | Nueva funcionalidad | `feat: agregar validación al login` |
+| `fix:` | Corrección de error | `fix: corregir error en formulario de registro` |
+| `docs:` | Cambios en documentación | `docs: actualizar README con nuevas capturas` |
+| `chore:` | Mantenimiento o limpieza | `chore: actualizar .gitignore` |
 
 
 ## Procedieminto Pull Requests y revisiones (incluyendo revision cruzada)
 
 ### Flujo de trabajo colaborativo Git
 
-bash
+```bash
 # 1. Cambiar a tu rama de trabajo
 git checkout <mi_rama>
 
@@ -67,26 +67,26 @@ git push origin <mi_rama>
 # 6. Unir cambios a main un PR (cuando terminas una funcionalidad)
 
 Recomendado: hacerlo con un Pull Request (PR) desde GitHub, para que los demás revisen antes de mezclar.
+```
 
+### Flujo de trabajo colaborativo GitHub
 
 El Pull Request(PR) de cualquiera de los integrante se enviara como solicitud al creador de repositorio para poder aplicar el cambio en el main.
 Una vez aprobado el PR, el integrante debe actualizar su rama local ejecutando: git pull origin main para mantener sincronizado su entorno.
 
-### Flujo de trabajo colaborativo GitHub
-
 ## Revisión cruzada de PRs
 
-Antes de que el líder apruebe un *Pull Request (PR)*, otro integrante del equipo debe revisarlo.
+Antes de que el líder apruebe un **Pull Request (PR)**, otro integrante del equipo debe revisarlo.
 
 ### Rotación de revisión
 
 | Quien hace PR | Quien revisa |
 |----------------|---------------|
-| *Josue* | Alexander |
-| *Alexander* | Ana |
-| *Ana* | Jennifer |
-| *Jennifer* | Josue |
-| *Gerardo* | Todos pueden revisar documentación |
+| **Josue** | Alexander |
+| **Alexander** | Ana |
+| **Ana** | Jennifer |
+| **Jennifer** | Josue |
+| **Gerardo** | Todos pueden revisar documentación |
 
 ---
 
@@ -94,20 +94,20 @@ Antes de que el líder apruebe un *Pull Request (PR)*, otro integrante del equip
 
 - Verificar que el código funcione correctamente.  
 - Comentar si hay errores o posibles mejoras.  
-- Confirmar con *“Approve”* si todo está correcto.
+- Confirmar con **“Approve”** si todo está correcto.
 
 ---
 
-*Nota:*  
-*Gerardo* es quien realiza el *merge final al main*.
+**Nota:**  
+**Gerardo** es quien realiza el **merge final al main**.
 
 ## Reglas de ramas y etiquetas
 
 ### Branch Rules
 
-- Nadie puede hacer *push directo al main*.  
-- El *main* solo se actualiza mediante *Pull Requests aprobados*.  
-- Cada módulo o cambio grande debe desarrollarse en una *rama distinta*.
+- Nadie puede hacer **push directo al main**.  
+- El **main** solo se actualiza mediante **Pull Requests aprobados**.  
+- Cada módulo o cambio grande debe desarrollarse en una **rama distinta**.
 
 ---
 
@@ -121,12 +121,12 @@ v1.0 → primera versión estable
 v1.1 → pequeña mejora o nueva función
 v2.0 → cambios grandes o rediseño
 
-bash
+```bash
 
 git tag -a v1.0 -m "Descripción de la versión"
 git push origin v1.0
 
-
+```
 ## Uso de Forks, upstream y flujo sincronizado
 
 ### Flujo cambiando a frok y luego el nuevo flujo de trabajo con fork (usamos upstream)
@@ -138,7 +138,7 @@ Entra al repo del líder en GitHub.
 Clic en Fork → Create Fork (se crea su copia personal).
 
 En la consola (sin borrar nada):
-bash
+```bash
 # Quitar el remoto actual
 git remote remove origin
 
@@ -157,9 +157,9 @@ upstream repo del líder
 
 Subir su trabajo actual:
 git push -u origin <mi_rama>
+```
 
-
-bash
+```bash
 # 1. Cambiar a tu rama de trabajo
 git checkout <mi_rama>
 
@@ -177,29 +177,29 @@ git commit -m "mensaje claro de lo que hiciste"
 
 # 6. Subir tu trabajo a tu fork remoto (tu propio repositorio)
 git push origin <mi_rama>
-
+```
 
 ## Gestión de Issues, Milestones y Tablero de Proyecto
 
 ### Issues
 
-Cada tarea, mejora o error debe registrarse como un *Issue* con:
+Cada tarea, mejora o error debe registrarse como un **Issue** con:
 
-- *Título claro y descriptivo*  
-- *Asignado a un integrante*  
-- *Etiqueta correspondiente* (bug, enhancement, docs, etc.)
+- **Título claro y descriptivo**  
+- **Asignado a un integrante**  
+- **Etiqueta correspondiente** (*bug*, *enhancement*, *docs*, etc.)
 
 ---
 
 ### Milestones
 
-Usamos *milestones* para agrupar issues o pull requests relacionados con una entrega o sprint.
+Usamos **milestones** para agrupar *issues* o *pull requests* relacionados con una entrega o sprint.
 
-*Ejemplo:*
+**Ejemplo:**
 
-- *Milestone 1:* Login y Registro  
-- *Milestone 2:* Carrito de Compras  
-- *Milestone 3:* Reportes Finales  
+- **Milestone 1:** Login y Registro  
+- **Milestone 2:** Carrito de Compras  
+- **Milestone 3:** Reportes Finales  
 
 ---
 
@@ -209,9 +209,9 @@ Organizado en columnas:
 
 | Estado | Descripción |
 |--------|--------------|
-| *To Do* | Tareas pendientes |
-| *In Progress* | En desarrollo |
-| *Review* | Esperando revisión |
-| *Done* | Completadas |
+| **To Do** | Tareas pendientes |
+| **In Progress** | En desarrollo |
+| **Review** | Esperando revisión |
+| **Done** | Completadas |
 
 Cada integrante debe mover sus tareas según su avance.
