@@ -8,9 +8,9 @@ Gracias por contribuir al proyecto. Este documento explica **cómo trabajaremos 
 
 | Integrante | Rol principal |
 |-------------|----------------|
-| **Gerardo** | Líder del proyecto, creador del repositorio y desarrollador backend (módulo de login) |
-| **Josue** | Desarrollador backend (módulo de carrito de compras) |
-| **Alexander** | Encargado de resolver conflictos y gestionar integraciones en Git/GitHub |
+| **Gerardo** | Líder del proyecto, creador del repositorio, configuración del repositorio y gestor de PR |
+| **Josue** | Desarrollador backend  |
+| **Alexander** | Encargado de resolver conflictos, documentación del proyecto y Testing |
 | **Ana** | Diseñadora de la interfaz principal del sistema |
 | **Jennifer** | Responsable de reportes y gestión de la base de datos |
 
@@ -226,8 +226,3 @@ Organizado en columnas:
 | **Done** | Completadas |
 
 Cada integrante debe mover sus tareas según su avance.
-
-
-
-
-
