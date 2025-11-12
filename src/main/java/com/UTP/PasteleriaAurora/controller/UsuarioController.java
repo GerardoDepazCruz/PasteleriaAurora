@@ -81,8 +81,6 @@ public class UsuarioController {
 
     @GetMapping("/login")
     public String login() {
-        Usuario usuario = null;
-        String username = usuario.getUsername();
         return "login";
     }
 

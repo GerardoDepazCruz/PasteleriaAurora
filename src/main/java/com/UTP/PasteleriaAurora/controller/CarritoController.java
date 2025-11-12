@@ -64,8 +64,29 @@ public class CarritoController {
 
     @PostMapping("/comprar")
     public String comprar(Principal principal, Model model, RedirectAttributes redirectAttributes) {
-        Usuario usuario = usuarioService.buscarPorUsername(principal.getName()).orElseThrow();
-        inventarioService.reducirInventario(9999L, 1000);
+        if (principal == null) {
+            redirectAttributes.addFlashAttribute("mensaje", "Debe iniciar sesión para comprar.");
+            return "redirect:/carrito";
+        }
+        Usuario usuario = usuarioService.buscarPorUsername(principal.getName()).orElse(null);
+        if (usuario == null) {
+            redirectAttributes.addFlashAttribute("mensaje", "Usuario no encontrado.");
+            return "redirect:/carrito";
+        }
+        List<CarritoItem> items = carritoItemService.listarItemsPorUsuario(usuario.getId());
+        if (items == null || items.isEmpty()) {
+            redirectAttributes.addFlashAttribute("mensaje", "El carrito está vacío.");
+            return "redirect:/carrito";
+        }
+        try {
+            for (CarritoItem item : items) {
+                inventarioService.reducirInventario(item.getProducto().getId(), item.getCantidad());
+                carritoItemService.eliminarItem(item.getId());
+            }
+            redirectAttributes.addFlashAttribute("mensaje", "¡Compra realizada con éxito!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("mensaje", "Error al procesar la compra: " + e.getMessage());
+        }
         return "redirect:/carrito";
     }
 
