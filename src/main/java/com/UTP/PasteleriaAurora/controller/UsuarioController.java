@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -56,7 +57,7 @@ public class UsuarioController {
 
     @PostMapping("/personalizado")
     public String enviarPedidoPersonalizado(@ModelAttribute PedidoPersonalizado pedido,
-                                            Principal principal) {
+            Principal principal) {
         String username = principal.getName();
         Usuario usuario = usuarioService.buscarPorUsername(username).orElseThrow();
 
@@ -71,11 +72,11 @@ public class UsuarioController {
     public String nosotros() {
         return "usuario/nosotros";
     }
-    
 
-    
     @GetMapping("/login")
     public String login() {
+        Usuario usuario = null;
+        String username = usuario.getUsername();
         return "login";
     }
 
@@ -86,7 +87,11 @@ public class UsuarioController {
     }
 
     @PostMapping("/registro")
-    public String registrarUsuario(@ModelAttribute Usuario usuario) {
+    public String registrarUsuario(@ModelAttribute Usuario usuario, RedirectAttributes redirectAttributes) {
+        if (usuarioService.buscarPorUsername(usuario.getUsername()).isPresent()) {
+            redirectAttributes.addFlashAttribute("error", "El usuario ya existe.");
+            return "registro";
+        }
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setRol(Usuario.Rol.USUARIO);
         usuarioService.guardarUsuario(usuario);
@@ -100,5 +105,3 @@ public class UsuarioController {
         return "ok";
     }
 }
-
-
