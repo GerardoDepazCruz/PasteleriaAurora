@@ -1,21 +1,26 @@
 package com.UTP.PasteleriaAurora.controller;
 
+import java.security.Principal;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.UTP.PasteleriaAurora.model.CarritoItem;
 import com.UTP.PasteleriaAurora.model.Producto;
 import com.UTP.PasteleriaAurora.model.Usuario;
 import com.UTP.PasteleriaAurora.service.CarritoItemService;
+import com.UTP.PasteleriaAurora.service.InventarioService;
 import com.UTP.PasteleriaAurora.service.ProductoService;
 import com.UTP.PasteleriaAurora.service.UsuarioService;
-import com.UTP.PasteleriaAurora.service.InventarioService;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,17 +41,24 @@ public class CarritoController {
     }
 
     @PostMapping("/agregar")
-    public String agregarAlCarrito(@RequestParam Long productoId,
-            @RequestParam(required = false, defaultValue = "1") Integer cantidad, Principal principal,
-            RedirectAttributes redirectAttributes) {
-        if (cantidad <= 0) {
-            redirectAttributes.addFlashAttribute("advertencia", "La cantidad debe ser al menos uno.");
-            return "redirect:/catalogo";
-        }
-
+    public String agregarAlCarrito(@RequestParam Long productoId, Principal principal) {
         Usuario usuario = usuarioService.buscarPorUsername(principal.getName()).orElseThrow();
         Producto producto = productoService.buscarPorId(productoId).orElseThrow();
-
+        List<CarritoItem> items = carritoItemService.listarItemsPorUsuario(usuario.getId());
+        CarritoItem existente = items.stream()
+                .filter(i -> i.getProducto().getId().equals(productoId))
+                .findFirst()
+                .orElse(null);
+        if (existente != null) {
+            existente.setCantidad(existente.getCantidad() + 1);
+            carritoItemService.guardarItem(existente);
+        } else {
+            CarritoItem item = new CarritoItem();
+            item.setUsuario(usuario);
+            item.setProducto(producto);
+            item.setCantidad(1);
+            carritoItemService.guardarItem(item);
+        }
         return "redirect:/catalogo";
     }
 
