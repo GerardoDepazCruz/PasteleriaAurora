@@ -13,8 +13,8 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-# Usar imagen de OpenJDK para ejecutar la app
-FROM openjdk:17-jdk
+# Usar imagen OpenJDK disponible para ejecutar la app
+FROM openjdk:17
 
 WORKDIR /app
 
