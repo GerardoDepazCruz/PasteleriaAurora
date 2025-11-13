@@ -1,18 +1,30 @@
-# Imagen base con Java 21
-FROM eclipse-temurin:21-jdk
+# -------- STAGE 1: BUILD --------
+FROM maven:3.9.8-eclipse-temurin-21 AS builder
 
-# Carpeta del contenedor
 WORKDIR /app
 
-# Copiar JAR generado por Maven
-COPY target/PasteleriaAurora-0.0.1-SNAPSHOT.jar app.jar
+# Copiamos el pom y descargamos dependencias (cache)
+COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Render define el PORT automáticamente.
-# Debemos pasar ese PORT a Spring Boot dentro del contenedor.
+# Copiamos todo el proyecto
+COPY . .
+
+# Compilamos y generamos el JAR
+RUN mvn clean package -DskipTests
+
+
+# -------- STAGE 2: RUN --------
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+# Copiamos el JAR desde el stage anterior
+COPY --from=builder /app/target/*.jar app.jar
+
+# Render asigna el puerto dinámicamente
 ENV PORT=8080
 
-# Exponer el puerto
 EXPOSE 8080
 
-# Comando de ejecución usando la variable de PORT
 ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
