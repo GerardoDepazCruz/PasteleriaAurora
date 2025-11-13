@@ -79,10 +79,11 @@ public class UsuarioController {
         return "usuario/nosotros";
     }
 
-    @GetMapping("/login")
+     @GetMapping("/login")
     public String login() {
         return "login";
     }
+
 
     @GetMapping("/registro")
     public String registroForm(Model model) {
@@ -101,7 +102,6 @@ public class UsuarioController {
         usuarioService.guardarUsuario(usuario);
         return "redirect:/login";
     }
-
     @PostMapping("/notificacion/{id}/leer")
     @ResponseBody
     public String marcarNotificacionLeida(@PathVariable Long id) {
