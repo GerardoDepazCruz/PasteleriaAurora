@@ -1,30 +1,28 @@
-# -------- STAGE 1: BUILD --------
-FROM maven:3.9.8-eclipse-temurin-21 AS builder
+# Usar imagen oficial de Maven para construir la app
+FROM maven:3.8.4-openjdk-17 AS build
 
 WORKDIR /app
 
-# Copiamos el pom y descargamos dependencias (cache)
+# Copiar pom.xml y bajar dependencias
 COPY pom.xml .
+
 RUN mvn dependency:go-offline
 
-# Copiamos todo el proyecto
-COPY . .
+# Copiar código fuente y construir la aplicación
+COPY src ./src
 
-# Compilamos y generamos el JAR
 RUN mvn clean package -DskipTests
 
-
-# -------- STAGE 2: RUN --------
-FROM eclipse-temurin:21-jdk
+# Usar imagen de OpenJDK para ejecutar la app
+FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-# Copiamos el JAR desde el stage anterior
-COPY --from=builder /app/target/*.jar app.jar
+# Copiar el .jar construido
+COPY --from=build /app/target/*.jar app.jar
 
-# Render asigna el puerto dinámicamente
-ENV PORT=8080
-
+# Exponer puerto 8080 (o el que uses)
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "java -jar app.jar"]
+# Ejecutar la aplicación
+ENTRYPOINT ["java","-jar","app.jar"]
