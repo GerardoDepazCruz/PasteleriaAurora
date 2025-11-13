@@ -1,16 +1,16 @@
-# Etapa de build con Maven y JDK 17
-FROM maven:3.8.4-amazoncorretto-17 AS build
+FROM maven:3.9.8-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
 COPY pom.xml .
+
 RUN mvn dependency:go-offline
 
 COPY src ./src
+
 RUN mvn clean package -DskipTests
 
-# Etapa runtime con Amazon Corretto 17
-FROM amazoncorretto:17
+FROM amazoncorretto:21
 
 WORKDIR /app
 
