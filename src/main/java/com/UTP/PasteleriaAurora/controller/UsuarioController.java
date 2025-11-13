@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.UTP.PasteleriaAurora.model.NotificacionPedido;
 import com.UTP.PasteleriaAurora.model.PedidoPersonalizado;
@@ -79,8 +78,10 @@ public class UsuarioController {
         return "usuario/nosotros";
     }
 
-     @GetMapping("/login")
+        @GetMapping("/login")
     public String login() {
+        Usuario usuario = null;
+        String username = usuario.getUsername();
         return "login";
     }
 
@@ -92,11 +93,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/registro")
-    public String registrarUsuario(@ModelAttribute Usuario usuario, RedirectAttributes redirectAttributes) {
-        if (usuarioService.buscarPorUsername(usuario.getUsername()).isPresent()) {
-            redirectAttributes.addFlashAttribute("error", "El usuario ya existe.");
-            return "registro";
-        }
+    public String registrarUsuario(@ModelAttribute Usuario usuario) {
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setRol(Usuario.Rol.USUARIO);
         usuarioService.guardarUsuario(usuario);
