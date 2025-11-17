@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Fragmento menú vertical admin -->
+<nav th:fragment="menuVertical" style="width: 220px; height: 100vh; background-color: #f4f4f4; padding: 20px; position: fixed; display: flex; flex-direction: column;">
+    <a th:href="@{/admin/productos}" style="margin-bottom: 15px; font-weight: bold;">Productos</a>
+    <a th:href="@{/admin/usuarios}" style="margin-bottom: 15px; font-weight: bold;">Usuarios</a>
+    <a th:href="@{/admin/pedidos}" style="margin-bottom: 15px; font-weight: bold;">Pedidos Personalizados</a>
+    <a th:href="@{/admin/inventario}" style="margin-bottom: 15px; font-weight: bold;">Inventario</a>
+    <a th:href="@{/admin/inventario/historial}" style="margin-bottom: 15px; font-weight: bold;">Historial de Inventario</a>
+    <a th:href="@{/logout}">Cerrar Sesión</a>
+</nav>
+
+
+<!-- Fragmento footer -->
+<footer th:fragment="footer" style="position: fixed; bottom: 0; left: 220px; right: 0; background-color: #f3ba4e; padding: 15px; text-align: center; font-weight: bold; color: #333;">
+    Pastelería © 2025 - Todos los derechos reservados
+</footer>
+
+</body>
+</html>

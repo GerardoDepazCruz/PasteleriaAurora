@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Historial de Inventario</title>
+</head>
+<body>
+
+<div th:replace="admin/fragments :: menuVertical"></div>
+
+<div style="margin-left: 300px; padding: 20px;">
+    <h2>Historial de Cambios para Inventario Id: <span th:text="${inventarioId}"></span></h2>
+
+    <table border="1" style="width: 90%; border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th>Cantidad Actual Anterior</th>
+            <th>Cantidad Mínima Anterior</th>
+            <th>Fecha Cambio</th>
+            <th>Fecha Registro</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="h : ${historial}">
+            <td th:text="${h.cantidadActualAnterior}"></td>
+            <td th:text="${h.cantidadMinimaAnterior}"></td>
+            <td th:text="${h.fechaCambioFormateada}"></td>
+            <td th:text="${h.fechaRegistroFormateada}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="admin/fragments :: footer"></div>
+
+</body>
+</html>

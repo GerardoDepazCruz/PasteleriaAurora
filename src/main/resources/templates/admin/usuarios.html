@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usuarios Registrados</title>
+</head>
+<body>
+
+<div th:replace="admin/fragments :: menuVertical"></div>
+
+<div style="margin-left: 300px; padding: 20px;">
+    <h2>Usuarios Registrados</h2>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th>ID</th><th>Usuario</th><th>Nombre Completo</th><th>Email</th><th>Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usr : ${usuarios}">
+            <td th:text="${usr.id}"></td>
+            <td th:text="${usr.username}"></td>
+            <td th:text="${usr.nombreCompleto}"></td>
+            <td th:text="${usr.email}"></td>
+            <td th:text="${usr.rol}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="admin/fragments :: footer"></div>
+
+</body>
+</html>
