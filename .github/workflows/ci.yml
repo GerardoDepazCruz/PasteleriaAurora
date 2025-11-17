@@ -29,6 +29,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2
 
+      - name: Dar permisos a mvnw
+        run: chmod +x mvnw
+
       - name: Instalar dependencias y ejecutar pruebas
         run: ./mvnw -B clean test
 
