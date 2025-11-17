@@ -1,58 +1,52 @@
-name: CI Pastelería Aurora
+name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: ["main"]
   pull_request:
-    branches: [ main ]
+    branches: ["main"]
 
 jobs:
-  test:
+
+  spring-boot-build:
     runs-on: ubuntu-latest
-    
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_DATABASE: Pasteleria_test
-          MYSQL_ROOT_PASSWORD: 123456
-        options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-        ports:
-          - 3306:3306
 
     steps:
-    - name: Checkout del código
-      uses: actions/checkout@v3
+      - name: Checkout código
+        uses: actions/checkout@v3
 
-    - name: Configurar JDK 21
-      uses: actions/setup-java@v3
-      with:
-        java-version: '21'
-        distribution: 'temurin'
+      - name: Configurar JDK (coincidir con pom.xml)
+        uses: actions/setup-java@v3
+        with:
+          java-version: "21"
+          distribution: "temurin"
 
-    - name: Esperar que MySQL esté listo
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y mysql-client
-        echo "Esperando a que MySQL esté listo..."
-        while ! mysqladmin ping -h"127.0.0.1" -P3306 -uroot -p123456 --silent; do
-          sleep 2
-        done
-        echo "✅ MySQL está listo!"
+      - name: Cache de Maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
 
-    - name: Compilar con Maven
-      run: mvn clean compile
+      - name: Instalar dependencias y ejecutar pruebas
+        run: ./mvnw -B clean test
 
-    - name: Ejecutar pruebas
-      run: mvn test
 
-    - name: Subir reportes de pruebas (solo si fallan)
-      uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: reportes-pruebas
-        path: target/surefire-reports/
+  nodejs-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npx jest
