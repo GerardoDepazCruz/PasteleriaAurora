@@ -1,4 +1,4 @@
-package com.UTP.PasteleriaAurora.Service;
+package com.UTP.PasteleriaAurora;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

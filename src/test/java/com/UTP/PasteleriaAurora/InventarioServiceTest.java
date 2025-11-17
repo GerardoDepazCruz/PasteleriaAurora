@@ -1,4 +1,4 @@
-package com.UTP.PasteleriaAurora.Service;
+package com.UTP.PasteleriaAurora;
 
 import com.UTP.PasteleriaAurora.model.Inventario;
 import com.UTP.PasteleriaAurora.model.Producto;
