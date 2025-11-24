@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Botón hamburguesa - oculto por defecto */
         .menu-hamburguesa {
@@ -26,7 +28,7 @@
             transition: 0.3s;
         }
 
-        /* Overlay para cerrar el menú al hacer clic fuera */
+        /* Overlay para cerrar el menú */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -42,77 +44,191 @@
             display: block;
         }
 
+        .menu-logout {
+            margin-top: auto;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background-color: #D95F66;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            display: block;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .menu-logout:hover {
+            background-color: #c54c53;
+        }
+
+        /* Estilos para enlaces del menú */
+        .menu-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: block;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
+        .menu-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Estilos para el footer */
+        .admin-footer {
+            position: fixed;
+            bottom: 0;
+            left: 220px;
+            right: 0;
+            background-color: #941528;
+            padding: 15px 30px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #7a1121;
+            z-index: 999;
+            box-sizing: border-box;
+        }
+
         /* Estilos responsive */
         @media (max-width: 768px) {
             .menu-hamburguesa {
                 display: block;
             }
 
-            nav[th\:fragment="menuVertical"] {
+            /* AJUSTE IMPORTANTE: Menú vertical empieza DESPUÉS del botón hamburguesa */
+            .menu-vertical {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
-                padding-top: 80px !important; /* Espacio para la hamburguesa */
+                padding: 90px 20px 20px 20px !important; /* Aumentado a 90px */
+                overflow-y: auto;
+                height: 100vh !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                box-sizing: border-box;
+                gap: 10px;
+                top: 0;
             }
 
-            nav[th\:fragment="menuVertical"].active {
+            .menu-vertical.active {
                 transform: translateX(0);
             }
 
             /* Ajustar footer en móvil */
-            footer[th\:fragment="footer"] {
+            .admin-footer {
+                position: fixed !important;
+                bottom: 0 !important;
                 left: 0 !important;
+                width: 100% !important;
+                padding: 12px 15px !important;
+                font-size: 14px;
+                text-align: center;
+                line-height: 1.3;
+            }
+
+            /* Asegurar que el botón de cerrar sesión sea visible */
+            .menu-vertical a:last-child {
+                margin-top: auto;
+                background-color: #D95F66;
+                text-align: center;
+            }
+
+            .menu-vertical a:last-child:hover {
+                background-color: #c54c53;
+            }
+        }
+
+        /* Para pantallas muy pequeñas - MÁS ABAJO */
+        @media (max-width: 480px) {
+            .admin-footer {
+                font-size: 12px !important;
+                padding: 10px 12px !important;
+                line-height: 1.2;
+            }
+
+            /* MÁS ESPACIO en móviles pequeños - AUMENTADO A 100px */
+            .menu-vertical {
+                padding: 100px 15px 15px 15px !important; /* Aumentado a 100px */
+            }
+        }
+
+        /* Para móviles muy pequeños - EXTRA BAJO */
+        @media (max-width: 360px) {
+            .menu-vertical {
+                padding: 110px 12px 12px 12px !important; /* Aún más abajo para móviles muy pequeños */
+            }
+            
+            .menu-hamburguesa {
+                top: 15px;
+                left: 15px;
+                padding: 8px;
+            }
+        }
+
+        /* Para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .admin-footer {
+                left: 220px !important;
+                padding: 15px 20px !important;
+                font-size: 15px;
             }
         }
     </style>
 </head>
+
 <body>
 
-<!-- Botón hamburguesa -->
-<button class="menu-hamburguesa" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+    <!-- Fragmento menú vertical admin - VERSION CORREGIDA -->
+    <nav th:fragment="menuVertical" class="menu-vertical"
+        style="width: 220px; min-height: 100vh; background-color: #941528; padding: 30px 20px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; gap: 10px; box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); z-index: 1000; box-sizing: border-box;">
+        <a th:href="@{/admin/productos}" class="menu-link">Productos</a>
+        <a th:href="@{/admin/usuarios}" class="menu-link">Usuarios</a>
+        <a th:href="@{/admin/pedidos}" class="menu-link">Pedidos Personalizados</a>
+        <a th:href="@{/admin/inventario}" class="menu-link">Inventario</a>
+        <a th:href="@{/admin/inventario/historial}" class="menu-link">Historial de Inventario</a>
+        <a th:href="@{/logout}" class="menu-logout">Cerrar Sesión</a>
+    </nav>
 
-<!-- Overlay -->
-<div class="menu-overlay" onclick="toggleMenu()"></div>
+    <!-- Fragmento footer -->
+    <footer th:fragment="footer" class="admin-footer">
+        Pastelería © 2025 - Herramientas de Desarrollo - Todos los derechos reservados
+    </footer>
 
-<!-- Fragmento menú vertical admin -->
-<nav th:fragment="menuVertical" style="width: 220px; height: 100vh; background-color: #941528; padding: 30px 20px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; gap: 10px; box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
-    <a th:href="@{/admin/productos}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Productos</a>
-    <a th:href="@{/admin/usuarios}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Usuarios</a>
-    <a th:href="@{/admin/pedidos}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Pedidos Personalizados</a>
-    <a th:href="@{/admin/inventario}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Inventario</a>
-    <a th:href="@{/admin/inventario/historial}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Historial de Inventario</a>
-    <a th:href="@{/logout}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 700; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: #D95F66; text-align: center; margin-top: auto;">Cerrar Sesión</a>
-</nav>
+    <script th:fragment="menuScript">
+        function toggleMenu() {
+            const nav = document.querySelector('.menu-vertical');
+            const overlay = document.querySelector('.menu-overlay');
 
-<!-- Fragmento footer -->
-<footer th:fragment="footer" style="position: fixed; bottom: 0; left: 220px; right: 0; background-color: #941528; padding: 15px 30px; text-align: center; font-weight: 600; color: white; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); border-top: 3px solid #7a1121; z-index: 999;">
-    Pastelería © 2025 - Herramientas de Desarrollo - Todos los derechos reservados
-</footer>
+            if (nav && overlay) {
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+        }
 
-<script>
-    function toggleMenu() {
-        const nav = document.querySelector('nav[th\\:fragment="menuVertical"]');
-        const overlay = document.querySelector('.menu-overlay');
-        
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-    }
-
-    // Cerrar menú al hacer clic en un enlace (opcional, para mejor UX en móvil)
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuLinks = document.querySelectorAll('nav[th\\:fragment="menuVertical"] a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    toggleMenu();
-                }
+        // Cerrar menú al hacer clic en un enlace
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuLinks = document.querySelectorAll('.menu-vertical a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
