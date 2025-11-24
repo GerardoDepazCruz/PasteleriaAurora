@@ -1,8 +1,10 @@
-package com.UTP.PasteleriaAurora.service;
+package com.UTP.PasteleriaAurora;
 
 import com.UTP.PasteleriaAurora.model.PedidoPersonalizado;
 import com.UTP.PasteleriaAurora.model.Usuario;
 import com.UTP.PasteleriaAurora.repository.PedidoPersonalizadoRepository;
+import com.UTP.PasteleriaAurora.service.PedidoPersonalizadoService;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

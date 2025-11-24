@@ -46,12 +46,24 @@
 
         .registro-container {
             background-color: rgba(255, 255, 255, 0.95);
+<<<<<<< HEAD
             padding: 50px 40px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             text-align: center;
             width: 450px;
             backdrop-filter: blur(10px);
+=======
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 450px;       /* un poco más ancho */
+            max-height: 90vh;   /* para que no ocupe todo el alto */
+            overflow-y: auto;   /* scroll si se pasa de alto */
+            backdrop-filter: blur(10px);
+            margin: 40px 0;     /* espacio arriba y abajo */
+>>>>>>> c03392d31167dadb20642bb5d151e2a88bf5f2a4
         }
 
         .logo {
@@ -104,7 +116,13 @@
             transition: all 0.3s ease;
         }
 
+<<<<<<< HEAD
         input:focus {
+=======
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+>>>>>>> c03392d31167dadb20642bb5d151e2a88bf5f2a4
             outline: none;
             border-color: #941528;
             box-shadow: 0 0 0 3px rgba(148, 21, 40, 0.1);
@@ -132,9 +150,40 @@
             transform: scale(0.98);
         }
 
+<<<<<<< HEAD
         .link-login {
             display: inline-block;
             margin-top: 20px;
+=======
+        .divider {
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        .divider span {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-login {
+            display: inline-block;
+            margin-top: 10px;
+>>>>>>> c03392d31167dadb20642bb5d151e2a88bf5f2a4
             padding: 12px 30px;
             color: #941528;
             text-decoration: none;
@@ -148,10 +197,24 @@
             background-color: #941528;
             color: white;
         }
+<<<<<<< HEAD
+=======
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+            font-size: 14px;
+        }
+>>>>>>> c03392d31167dadb20642bb5d151e2a88bf5f2a4
     </style>
 </head>
 <body>
     <div class="registro-container">
+<<<<<<< HEAD
         <div class="logo">🧁</div>
         <h1>Crear Cuenta</h1>
         <p class="subtitle">Pastelería Aurora</p>
@@ -186,6 +249,45 @@
         </form>
 
         <a th:href="@{/login}" class="link-login">Volver al Login</a>
+=======
+        <div class="logo">🎂</div>
+        <h1>Registro</h1>
+        <p class="subtitle">Pastelería Aurora</p>
+
+        <div th:if="${param.error}" class="error-message">
+            ❌ Ocurrió un error en el registro
+        </div>
+
+        <form th:action="@{/registro}" th:object="${usuario}" method="post">
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" th:field="*{username}" placeholder="Ingresa tu usuario" required />
+            </div>
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" th:field="*{nombreCompleto}" placeholder="Ingresa tu nombre completo" required />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" th:field="*{email}" placeholder="Ingresa tu email" required />
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" th:field="*{telefono}" placeholder="Ingresa tu teléfono" required />
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" th:field="*{password}" placeholder="Ingresa tu contraseña" required />
+            </div>
+            <button type="submit" class="btn-registrar">📝 Registrar</button>
+        </form>
+
+        <div class="divider">
+            <span>¿Ya tienes cuenta?</span>
+        </div>
+
+        <a th:href="@{/login}" class="link-login">Iniciar Sesión</a>
+>>>>>>> c03392d31167dadb20642bb5d151e2a88bf5f2a4
     </div>
 </body>
 </html>
