@@ -92,3 +92,232 @@ main {
   font-size: 16px;
   line-height: 1.6;
 }
+
+/* ===== RESPONSIVE NOSOTROS MEJORADO ===== */
+
+/* TABLETS (768px - 1024px) */
+@media (max-width: 1024px) {
+  main {
+    padding: 50px 25px;
+  }
+  
+  .sobre-cakes {
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+  
+  .sobre-cakes h2 {
+    font-size: 34px;
+    margin-bottom: 35px;
+  }
+  
+  .sobre-flex {
+    gap: 40px;
+  }
+  
+  .sobre-img img {
+    width: 100%;
+    height: 350px;
+    max-width: 500px;
+  }
+  
+  .sobre-texto {
+    gap: 25px;
+  }
+  
+  .sobre-texto p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  
+  .mision-vision {
+    gap: 40px;
+    max-width: 100%;
+  }
+  
+  .mision,
+  .vision {
+    padding: 35px 25px;
+    gap: 25px;
+    min-height: 280px;
+  }
+  
+  .icono {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .mision h3,
+  .vision h3 {
+    font-size: 26px;
+  }
+  
+  .mision p,
+  .vision p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+}
+
+/* MÓVILES GRANDES (481px - 767px) */
+@media (max-width: 767px) {
+  main {
+    padding: 40px 20px;
+  }
+  
+  .sobre-cakes {
+    margin-bottom: 40px;
+  }
+  
+  .sobre-cakes h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .sobre-flex {
+    flex-direction: column;
+    gap: 35px;
+  }
+  
+  .sobre-img img {
+    width: 100%;
+    height: 300px;
+    max-width: 100%;
+  }
+  
+  .sobre-texto {
+    gap: 20px;
+  }
+  
+  .sobre-texto p {
+    font-size: 17px;
+    text-align: left;
+    line-height: 1.7;
+  }
+  
+  .mision-vision {
+    flex-direction: column;
+    gap: 35px;
+  }
+  
+  .mision,
+  .vision {
+    padding: 30px 25px;
+    gap: 20px;
+    min-height: 250px;
+  }
+  
+  .icono {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .mision h3,
+  .vision h3 {
+    font-size: 24px;
+  }
+  
+  .mision p,
+  .vision p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+}
+
+/* MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  main {
+    padding: 35px 15px;
+  }
+  
+  .sobre-cakes h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+  
+  .sobre-flex {
+    gap: 30px;
+  }
+  
+  .sobre-img img {
+    height: 250px;
+  }
+  
+  .sobre-texto {
+    gap: 18px;
+  }
+  
+  .sobre-texto p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  
+  .mision-vision {
+    gap: 30px;
+  }
+  
+  .mision,
+  .vision {
+    padding: 25px 20px;
+    gap: 18px;
+    min-height: 220px;
+  }
+  
+  .icono {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .mision h3,
+  .vision h3 {
+    font-size: 22px;
+  }
+  
+  .mision p,
+  .vision p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+/* MÓVILES MUY PEQUEÑOS (hasta 360px) */
+@media (max-width: 360px) {
+  main {
+    padding: 30px 10px;
+  }
+  
+  .sobre-cakes h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .sobre-img img {
+    height: 220px;
+  }
+  
+  .sobre-texto p {
+    font-size: 15px;
+  }
+  
+  .mision,
+  .vision {
+    padding: 22px 18px;
+    gap: 15px;
+    min-height: 200px;
+  }
+  
+  .icono {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mision h3,
+  .vision h3 {
+    font-size: 20px;
+  }
+  
+  .mision p,
+  .vision p {
+    font-size: 15px;
+  }
+}

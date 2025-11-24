@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario</title>
     <style>
         * {
@@ -17,6 +18,46 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Botón hamburguesa */
+        .menu-hamburguesa {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #941528;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-hamburguesa span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
         .contenido-principal {
             margin-left: 220px;
             padding: 30px;
@@ -29,6 +70,11 @@
             font-size: 30px;
             margin-bottom: 30px;
             font-weight: 700;
+        }
+
+        .tabla-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .tabla-inventario {
@@ -49,6 +95,7 @@
             text-align: left;
             font-weight: 600;
             font-size: 14px;
+            white-space: nowrap;
         }
 
         .tabla-inventario td {
@@ -212,9 +259,213 @@
                 transform: scale(0.9);
             }
         }
+
+        /* ===== RESPONSIVE MÁS GRANDE ===== */
+        @media (max-width: 768px) {
+            .menu-hamburguesa {
+                display: block;
+                top: 25px;
+                left: 25px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .menu-hamburguesa span {
+                width: 30px;
+                height: 4px;
+                margin: 6px 0;
+            }
+
+            nav[style*="width: 220px"] {
+                transform: translateX(-100%) !important;
+                transition: transform 0.3s ease !important;
+            }
+
+            nav[style*="width: 220px"].active {
+                transform: translateX(0) !important;
+            }
+
+            .contenido-principal {
+                margin-left: 0;
+                padding: 100px 25px 120px 25px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 32px;
+                margin-bottom: 35px;
+            }
+
+            .tabla-container {
+                border: 2px solid #941528;
+                border-radius: 12px;
+                padding: 5px;
+                background: white;
+                margin-bottom: 25px;
+            }
+
+            .tabla-inventario th {
+                padding: 18px 16px;
+                font-size: 17px;
+                font-weight: 700;
+            }
+
+            .tabla-inventario td {
+                padding: 16px;
+                font-size: 16px;
+                height: 70px;
+            }
+
+            .tabla-inventario input[type="number"] {
+                width: 120px;
+                padding: 12px;
+                font-size: 16px;
+                border: 2px solid #ddd;
+                border-radius: 6px;
+                height: 45px;
+            }
+
+            .btn-actualizar {
+                padding: 12px 20px;
+                font-size: 16px;
+                font-weight: 700;
+                border-radius: 6px;
+                border: 2px solid #28a745;
+            }
+
+            .link-historial {
+                font-size: 18px;
+                padding: 15px 25px;
+                border-radius: 8px;
+                border-width: 3px;
+                text-align: center;
+                display: block;
+                width: 100%;
+                max-width: 400px;
+                margin: 30px auto 0 auto;
+            }
+
+            .modal-content {
+                width: 90%;
+                margin: 5% auto;
+                padding: 25px;
+            }
+
+            .modal-titulo {
+                font-size: 24px;
+            }
+
+            .modal-content li {
+                padding: 15px;
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .close-btn {
+                padding: 10px 18px;
+                font-size: 18px;
+            }
+
+            footer[style*="left: 220px"] {
+                left: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contenido-principal {
+                padding: 90px 20px 120px 20px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 28px;
+            }
+
+            .tabla-inventario th,
+            .tabla-inventario td {
+                padding: 14px 12px;
+                font-size: 15px;
+                height: 65px;
+            }
+
+            .tabla-inventario input[type="number"] {
+                width: 100px;
+                padding: 10px;
+                font-size: 15px;
+                height: 40px;
+            }
+
+            .btn-actualizar {
+                padding: 10px 16px;
+                font-size: 15px;
+            }
+
+            .link-historial {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .modal-titulo {
+                font-size: 22px;
+            }
+
+            .modal-content li {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .contenido-principal {
+                padding: 80px 15px 120px 15px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 26px;
+            }
+
+            .tabla-inventario th,
+            .tabla-inventario td {
+                padding: 12px 10px;
+                font-size: 14px;
+                height: 60px;
+            }
+
+            .tabla-inventario input[type="number"] {
+                width: 90px;
+                padding: 8px;
+                font-size: 14px;
+                height: 35px;
+            }
+
+            .btn-actualizar {
+                padding: 8px 14px;
+                font-size: 14px;
+                display: block;
+                width: 100%;
+            }
+
+            .link-historial {
+                font-size: 15px;
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
+
+<!-- Botón hamburguesa -->
+<button class="menu-hamburguesa" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Overlay -->
+<div class="menu-overlay" onclick="toggleMenu()"></div>
 
 <div th:replace="~{admin/fragments :: menuVertical}"></div>
 
@@ -235,37 +486,40 @@
         </div>
     </div>
 
-    <form th:action="@{/admin/inventario/actualizar}" method="post">
-        <table class="tabla-inventario">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Cantidad Actual</th>
-                    <th>Cantidad Mínima</th>
-                    <th>Última Actualización</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="inv : ${inventario}">
-                    <td th:text="${inv.id}"></td>
-                    <td th:text="${inv.producto.nombre}"></td>
-                    <td>
-                        <input type="number" name="cantidadActual" th:value="${inv.cantidadActual}" required/>
-                    </td>
-                    <td>
-                        <input type="number" name="cantidadMinima" th:value="${inv.cantidadMinima}" required/>
-                    </td>
-                    <td th:text="${inv.fechaFormateada}"></td>
-                    <td>
-                        <input type="hidden" name="id" th:value="${inv.id}"/>
-                        <button type="submit" class="btn-actualizar">Actualizar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+    <!-- Tabla con scroll horizontal en móvil -->
+    <div class="tabla-container">
+        <form th:action="@{/admin/inventario/actualizar}" method="post">
+            <table class="tabla-inventario">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Cantidad Actual</th>
+                        <th>Cantidad Mínima</th>
+                        <th>Última Actualización</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="inv : ${inventario}">
+                        <td th:text="${inv.id}"></td>
+                        <td th:text="${inv.producto.nombre}"></td>
+                        <td>
+                            <input type="number" name="cantidadActual" th:value="${inv.cantidadActual}" required/>
+                        </td>
+                        <td>
+                            <input type="number" name="cantidadMinima" th:value="${inv.cantidadMinima}" required/>
+                        </td>
+                        <td th:text="${inv.fechaFormateada}"></td>
+                        <td>
+                            <input type="hidden" name="id" th:value="${inv.id}"/>
+                            <button type="submit" class="btn-actualizar">Actualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
 
     <a th:href="@{/admin/inventario/historial}" class="link-historial">📋 Ver Historial de Inventarios</a>
 </div>
@@ -273,6 +527,28 @@
 <div th:replace="~{admin/fragments :: footer}"></div>
 
 <script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav[style*="width: 220px"]');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        if (nav && overlay) {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('nav[style*="width: 220px"] a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+    });
+
     window.onload = function() {
         const modal = document.getElementById("modalAlerta");
         if (modal) {
