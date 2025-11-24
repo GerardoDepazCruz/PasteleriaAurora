@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+    nav[th\:fragment="menuVertical"] {
+        padding-top: 80px !important;
+    }
+    body.menu-open {
+        margin-top: 60px; 
+    }
+</style>
+</head>
 <body>
 
 <!-- Botón hamburguesa -->
@@ -34,6 +44,9 @@
         
         nav.classList.toggle('active');
         overlay.classList.toggle('active');
+
+        // NUEVO → mover contenido hacia abajo
+        document.body.classList.toggle("menu-open");
     }
 
     // Cerrar menú al hacer clic en un enlace (opcional, para mejor UX en móvil)
