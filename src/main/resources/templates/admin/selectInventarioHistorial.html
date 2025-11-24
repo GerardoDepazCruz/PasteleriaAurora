@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar Inventario para Historial</title>
     <style>
         * {
@@ -15,6 +16,46 @@
             padding: 0;
             background-color: #FEF5E4;
             font-family: Arial, sans-serif;
+        }
+
+        /* Botón hamburguesa */
+        .menu-hamburguesa {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #941528;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-hamburguesa span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .menu-overlay.active {
+            display: block;
         }
 
         .contenido-principal {
@@ -95,9 +136,164 @@
             font-size: 48px;
             margin-bottom: 20px;
         }
+
+        /* ===== RESPONSIVE MÁS GRANDE ===== */
+        @media (max-width: 768px) {
+            .menu-hamburguesa {
+                display: block;
+                top: 25px;
+                left: 25px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .menu-hamburguesa span {
+                width: 30px;
+                height: 4px;
+                margin: 6px 0;
+            }
+
+            nav[style*="width: 220px"] {
+                transform: translateX(-100%) !important;
+                transition: transform 0.3s ease !important;
+            }
+
+            nav[style*="width: 220px"].active {
+                transform: translateX(0) !important;
+            }
+
+            .contenido-principal {
+                margin-left: 0;
+                padding: 100px 25px 120px 25px;
+                justify-content: flex-start;
+            }
+
+            .contenido-principal h2 {
+                font-size: 32px;
+                margin-bottom: 50px;
+                margin-top: 20px;
+            }
+
+            .form-selector {
+                padding: 35px 30px;
+                border: 3px solid #941528;
+                border-radius: 15px;
+                max-width: 450px;
+            }
+
+            .form-selector select {
+                padding: 18px;
+                font-size: 18px;
+                border: 3px solid #ddd;
+                border-radius: 8px;
+                margin-bottom: 30px;
+                height: 60px;
+            }
+
+            .form-selector select:focus {
+                box-shadow: 0 0 0 4px rgba(148, 21, 40, 0.15);
+            }
+
+            .form-selector select option {
+                padding: 15px;
+                font-size: 16px;
+            }
+
+            .form-selector button[type="submit"] {
+                padding: 18px 25px;
+                font-size: 20px;
+                font-weight: 700;
+                border-radius: 8px;
+                height: 65px;
+            }
+
+            .icono-selector {
+                font-size: 60px;
+                margin-bottom: 25px;
+            }
+
+            footer[style*="left: 220px"] {
+                left: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contenido-principal {
+                padding: 90px 20px 120px 20px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .form-selector {
+                padding: 30px 25px;
+                max-width: 400px;
+            }
+
+            .form-selector select {
+                padding: 16px;
+                font-size: 17px;
+                height: 55px;
+            }
+
+            .form-selector button[type="submit"] {
+                padding: 16px 20px;
+                font-size: 18px;
+                height: 60px;
+            }
+
+            .icono-selector {
+                font-size: 55px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .contenido-principal {
+                padding: 80px 15px 120px 15px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 26px;
+                margin-bottom: 35px;
+            }
+
+            .form-selector {
+                padding: 25px 20px;
+            }
+
+            .form-selector select {
+                padding: 14px;
+                font-size: 16px;
+                height: 50px;
+            }
+
+            .form-selector button[type="submit"] {
+                padding: 14px 15px;
+                font-size: 17px;
+                height: 55px;
+            }
+
+            .icono-selector {
+                font-size: 50px;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
+
+<!-- Botón hamburguesa -->
+<button class="menu-hamburguesa" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Overlay -->
+<div class="menu-overlay" onclick="toggleMenu()"></div>
 
 <div th:replace="~{admin/fragments :: menuVertical}"></div>
 
@@ -117,6 +313,30 @@
 </div>
 
 <div th:replace="~{admin/fragments :: footer}"></div>
+
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav[style*="width: 220px"]');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        if (nav && overlay) {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('nav[style*="width: 220px"] a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Productos</title>
     <style>
         * {
@@ -15,6 +16,46 @@
             padding: 0;
             background-color: #FEF5E4;
             font-family: Arial, sans-serif;
+        }
+
+        /* Botón hamburguesa */
+        .menu-hamburguesa {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #941528;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-hamburguesa span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .menu-overlay.active {
+            display: block;
         }
 
         .contenido-principal {
@@ -88,6 +129,11 @@
             background-color: #b12e40;
         }
 
+        .tabla-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .tabla-productos {
             width: 100%;
             background-color: white;
@@ -106,6 +152,7 @@
             text-align: left;
             font-weight: 600;
             font-size: 14px;
+            white-space: nowrap;
         }
 
         .tabla-productos td {
@@ -158,9 +205,182 @@
             background-color: #c82333;
         }
 
+        /* ===== ESTILOS RESPONSIVE MÁS GRANDES ===== */
+        @media (max-width: 768px) {
+            .menu-hamburguesa {
+                display: block;
+                top: 25px;
+                left: 25px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .menu-hamburguesa span {
+                width: 30px;
+                height: 4px;
+                margin: 6px 0;
+            }
+
+            nav[style*="width: 220px"] {
+                transform: translateX(-100%) !important;
+                transition: transform 0.3s ease !important;
+            }
+
+            nav[style*="width: 220px"].active {
+                transform: translateX(0) !important;
+            }
+
+            .contenido-principal {
+                margin-left: 0;
+                padding: 100px 25px 120px 25px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 32px;
+                margin-bottom: 35px;
+            }
+
+            .form-producto {
+                padding: 30px;
+                max-width: 100%;
+                border: 3px solid #941528;
+                border-radius: 12px;
+            }
+
+            .form-producto label {
+                font-size: 18px;
+                margin-bottom: 12px;
+                margin-top: 20px;
+                font-weight: 700;
+            }
+
+            .form-producto input {
+                padding: 16px;
+                font-size: 17px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                height: 55px;
+            }
+
+            .form-producto input:focus {
+                box-shadow: 0 0 0 4px rgba(148, 21, 40, 0.15);
+            }
+
+            .form-producto button[type="submit"] {
+                padding: 16px 25px;
+                font-size: 18px;
+                font-weight: 700;
+                margin-top: 25px;
+                height: 60px;
+                border-radius: 8px;
+            }
+
+            .tabla-container {
+                border: 2px solid #941528;
+                border-radius: 12px;
+                padding: 5px;
+                background: white;
+            }
+
+            .tabla-productos th {
+                padding: 18px 16px;
+                font-size: 17px;
+                font-weight: 700;
+            }
+
+            .tabla-productos td {
+                padding: 16px;
+                font-size: 16px;
+                height: 60px;
+            }
+
+            .btn-editar {
+                padding: 10px 16px;
+                font-size: 15px;
+                font-weight: 700;
+                border-radius: 6px;
+                border: 2px solid #941528;
+            }
+
+            .btn-eliminar {
+                padding: 10px 16px;
+                font-size: 15px;
+                font-weight: 700;
+                border-radius: 6px;
+                border: 2px solid #dc3545;
+            }
+
+            .form-eliminar {
+                margin-left: 12px;
+            }
+
+            footer[style*="left: 220px"] {
+                left: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contenido-principal {
+                padding: 90px 20px 120px 20px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 28px;
+            }
+
+            .form-producto {
+                padding: 25px;
+            }
+
+            .form-producto label {
+                font-size: 17px;
+            }
+
+            .form-producto input {
+                font-size: 16px;
+                height: 50px;
+            }
+
+            .form-producto button[type="submit"] {
+                font-size: 17px;
+                height: 55px;
+            }
+
+            .tabla-productos th,
+            .tabla-productos td {
+                padding: 14px 12px;
+                font-size: 15px;
+                height: 55px;
+            }
+
+            .btn-editar,
+            .btn-eliminar {
+                display: block;
+                width: 100%;
+                margin-bottom: 8px;
+                text-align: center;
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .form-eliminar {
+                display: block;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
+
+<!-- Botón hamburguesa -->
+<button class="menu-hamburguesa" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Overlay -->
+<div class="menu-overlay" onclick="toggleMenu()"></div>
 
 <!-- Incluye menú vertical -->
 <div th:replace="~{admin/fragments :: menuVertical}"></div>
@@ -182,36 +402,62 @@
         <button type="submit">Guardar Producto</button>
     </form>
 
-    <!-- Tabla de productos -->
-    <table class="tabla-productos">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="prod : ${productos}">
-                <td th:text="${prod.id}"></td>
-                <td th:text="${prod.nombre}"></td>
-                <td th:text="${prod.descripcion}"></td>
-                <td th:text="${prod.precio}"></td>
-                <td>
-                    <a th:href="@{'/admin/productos/editar/' + ${prod.id}}" class="btn-editar">Editar</a>
-                    <form th:action="@{'/admin/productos/eliminar/' + ${prod.id}}" method="post" class="form-eliminar">
-                        <button type="submit" class="btn-eliminar" onclick="return confirm('¿Eliminar este producto?')">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Tabla de productos con scroll horizontal en móvil -->
+    <div class="tabla-container">
+        <table class="tabla-productos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prod : ${productos}">
+                    <td th:text="${prod.id}"></td>
+                    <td th:text="${prod.nombre}"></td>
+                    <td th:text="${prod.descripcion}"></td>
+                    <td th:text="${prod.precio}"></td>
+                    <td>
+                        <a th:href="@{'/admin/productos/editar/' + ${prod.id}}" class="btn-editar">Editar</a>
+                        <form th:action="@{'/admin/productos/eliminar/' + ${prod.id}}" method="post" class="form-eliminar">
+                            <button type="submit" class="btn-eliminar" onclick="return confirm('¿Eliminar este producto?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Incluye footer -->
 <div th:replace="~{admin/fragments :: footer}"></div>
+
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav[style*="width: 220px"]');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        if (nav && overlay) {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('nav[style*="width: 220px"] a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Fragments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<!-- 🧁 Fragmento Navbar -->
+<!--Fragmento Navbar -->
 <div th:fragment="navbar">
   <nav class="navbar">
     <!-- Logo -->
@@ -15,7 +16,7 @@
       </a>
     </div>
 
-    <!-- Enlaces -->
+    <!-- Enlaces Desktop -->
     <ul class="navbar-links">
       <li><a th:href="@{/inicio}">Inicio</a></li>
       <li><a th:href="@{/catalogo}">Catálogo</a></li>
@@ -24,16 +25,64 @@
       <li><a th:href="@{/contacto}">Contacto</a></li>
     </ul>
 
-    <!-- Íconos + Cerrar sesión -->
+    <!-- Íconos + Cerrar sesión Desktop -->
     <div class="navbar-icons">
       <a th:href="@{/carrito}"><img src="/img/logo-carrito.png" alt="Carrito"></a>
       <a th:href="@{/logout}" class="logout-link">Cerrar Sesión</a>
     </div>
+
+    <!-- Botón Hamburguesa (solo móvil) -->
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
+  <!-- Menú Móvil -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+    
+    <ul class="mobile-menu-links">
+      <li><a th:href="@{/inicio}" onclick="toggleMobileMenu()">Inicio</a></li>
+      <li><a th:href="@{/catalogo}" onclick="toggleMobileMenu()">Catálogo</a></li>
+      <li><a th:href="@{/personalizado}" onclick="toggleMobileMenu()">Crea tu pastel</a></li>
+      <li><a th:href="@{/nosotros}" onclick="toggleMobileMenu()">Nosotros</a></li>
+      <li><a th:href="@{/contacto}" onclick="toggleMobileMenu()">Contacto</a></li>
+    </ul>
+
+    <div class="mobile-menu-icons">
+      <a th:href="@{/logout}" class="mobile-logout">Cerrar Sesión</a>
+    </div>
+  </div>
+
+  <script th:inline="javascript">
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const body = document.body;
+      
+      if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        body.style.overflow = 'auto';
+      } else {
+        menu.classList.add('active');
+        body.style.overflow = 'hidden';
+      }
+    }
+
+    // Cerrar menú al redimensionar ventana
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 767) {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
 </div>
 
 
-<!-- 🎂 Fragmento Footer -->
+<!-- Fragmento Footer -->
 <div th:fragment="footer">
   <footer class="footer">
     <div class="footer-container">

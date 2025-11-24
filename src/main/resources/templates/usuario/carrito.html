@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
     <link rel="stylesheet" th:href="@{/css/fragments.css}">
     <link rel="stylesheet" th:href="@{/css/carrito.css}">
 </head>
 <body>
-    <div th:replace="~{usuario/fragments :: navbar}"></div>
+    <div th:replace="usuario/fragments :: navbar"></div>
     
     <div class="carrito-container">
         <h1>🛒 Carrito de Compras</h1>
@@ -48,6 +49,6 @@
         </div>
     </div>
 
-    <div th:replace="~{usuario/fragments :: footer}"></div>
+    <div th:replace="usuario/fragments :: footer"></div>
 </body>
 </html>
