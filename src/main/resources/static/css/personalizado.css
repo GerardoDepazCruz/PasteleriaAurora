@@ -1,54 +1,58 @@
 h1 {
     color: #941528;
-    font-size: 36px;
+    font-size: 42px;
     font-weight: 700;
     text-align: center;
-    margin: 40px 0;
+    margin: 50px 0;
 }
 
 .pedido-container {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 60px 30px;
 }
 
 .form-pedido {
     background-color: white;
-    border: 2px solid #941528;
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #941528;
+    border-radius: 16px;
+    padding: 60px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .form-pedido label {
     display: block;
     color: #941528;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 .form-pedido textarea {
     width: 100%;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 25px;
+    border: 3px solid #ddd;
+    border-radius: 12px;
+    font-size: 20px;
     font-family: Arial, sans-serif;
     color: #333;
     resize: vertical;
     transition: border-color 0.3s ease;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
+    min-height: 250px;
+    line-height: 1.6;
 }
 
 .form-pedido textarea:focus {
     outline: none;
     border-color: #941528;
-    box-shadow: 0 0 0 3px rgba(148, 21, 40, 0.1);
+    box-shadow: 0 0 0 4px rgba(148, 21, 40, 0.15);
 }
 
 .form-pedido textarea::placeholder {
     color: #999;
+    font-size: 18px;
 }
 
 .btn-enviar {
@@ -56,24 +60,301 @@ h1 {
     background-color: #941528;
     color: white;
     border: none;
-    padding: 15px 20px;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 .btn-enviar:hover {
     background-color: #b12e40;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-enviar:active {
-    transform: scale(0.98);
+    transform: translateY(0);
 }
 
 .icono-decorativo {
     text-align: center;
-    font-size: 64px;
-    margin-bottom: 20px;
+    font-size: 80px;
+    margin-bottom: 30px;
+}
+
+/* =============================== */
+/*    MÁS PEQUEÑO SOLO EN PC       */
+/* =============================== */
+
+@media (min-width: 1025px) {
+    .pedido-container {
+        max-width: 600px; /* antes 900px */
+        padding: 30px 15px; /* antes 60px */
+    }
+
+    .form-pedido {
+        padding: 30px; /* antes 60px */
+        border-width: 2px;
+    }
+
+    h1 {
+        font-size: 30px; /* antes 42px */
+        margin: 30px 0; /* antes 50px */
+    }
+
+    .form-pedido label {
+        font-size: 20px; /* antes 24px */
+        margin-bottom: 20px;
+    }
+
+    .form-pedido textarea {
+        font-size: 18px;
+        min-height: 200px; /* antes 250px */
+        padding: 20px;
+    }
+
+    .btn-enviar {
+        font-size: 18px; /* antes 22px */
+        padding: 14px 15px;
+    }
+
+    .icono-decorativo {
+        font-size: 55px; /* antes 80px */
+        margin-bottom: 20px;
+    }
+}
+
+/* ===================================== */
+/*  RESPONSIVE ORIGINAL (NO MODIFICADO)  */
+/* ===================================== */
+
+/* TABLETS (768px - 1024px) */
+@media (max-width: 1024px) {
+    .pedido-container {
+        padding: 50px 25px;
+        max-width: 800px;
+    }
+    
+    h1 {
+        font-size: 38px;
+        margin: 40px 0;
+    }
+    
+    .form-pedido {
+        padding: 50px;
+    }
+    
+    .form-pedido label {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .form-pedido textarea {
+        font-size: 18px;
+        padding: 20px;
+        min-height: 200px;
+    }
+    
+    .btn-enviar {
+        padding: 18px 25px;
+        font-size: 20px;
+    }
+    
+    .icono-decorativo {
+        font-size: 70px;
+        margin-bottom: 25px;
+    }
+}
+
+/* MÓVILES GRANDES (481px - 767px) */
+@media (max-width: 767px) {
+    .pedido-container {
+        padding: 40px 20px;
+        max-width: 600px;
+    }
+    
+    h1 {
+        font-size: 34px;
+        margin: 35px 0;
+    }
+    
+    .form-pedido {
+        padding: 40px;
+        border-width: 2px;
+    }
+    
+    .form-pedido label {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .form-pedido textarea {
+        font-size: 18px;
+        padding: 18px;
+        margin-bottom: 30px;
+        min-height: 180px;
+    }
+    
+    .btn-enviar {
+        padding: 18px 20px;
+        font-size: 20px;
+    }
+    
+    .icono-decorativo {
+        font-size: 65px;
+        margin-bottom: 20px;
+    }
+}
+
+/* MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .pedido-container {
+        padding: 30px 15px;
+    }
+    
+    h1 {
+        font-size: 30px;
+        margin: 30px 0;
+    }
+    
+    .form-pedido {
+        padding: 30px;
+    }
+    
+    .form-pedido label {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .form-pedido textarea {
+        font-size: 16px;
+        padding: 15px;
+        margin-bottom: 25px;
+        min-height: 150px;
+    }
+    
+    .btn-enviar {
+        padding: 16px 15px;
+        font-size: 18px;
+    }
+    
+    .icono-decorativo {
+        font-size: 55px;
+        margin-bottom: 15px;
+    }
+}
+
+/* MÓVILES MUY PEQUEÑOS (hasta 360px) */
+@media (max-width: 360px) {
+    .pedido-container {
+        padding: 25px 10px;
+    }
+    
+    h1 {
+        font-size: 28px;
+        margin: 25px 0;
+    }
+    
+    .form-pedido {
+        padding: 25px;
+    }
+    
+    .form-pedido label {
+        font-size: 17px;
+    }
+    
+    .form-pedido textarea {
+        font-size: 15px;
+        padding: 12px;
+        min-height: 130px;
+    }
+    
+    .btn-enviar {
+        padding: 14px 10px;
+        font-size: 16px;
+    }
+    
+    .icono-decorativo {
+        font-size: 50px;
+    }
+}
+
+/* ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+    .btn-enviar:hover {
+        transform: none;
+    }
+    
+    .form-pedido textarea {
+        transition: none;
+    }
+}
+
+.btn-enviar:focus {
+    outline: 3px solid #FFB1B1;
+    outline-offset: 3px;
+}
+
+.form-pedido textarea:focus {
+    outline: 3px solid #941528;
+    outline-offset: 3px;
+}
+
+.btn-enviar.loading {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@keyframes enviadoExitoso {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.btn-enviar.enviado {
+    animation: enviadoExitoso 0.4s ease;
+    background-color: #4CAF50;
+}
+
+.mensaje-error {
+    color: #d32f2f;
+    font-size: 18px;
+    margin-top: -25px;
+    margin-bottom: 25px;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+}
+
+.mensaje-exito {
+    color: #388e3c;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 2px solid #c8e6c9;
+    font-weight: 600;
+}
+
+.instrucciones {
+    background-color: #FFF9C4;
+    border: 2px solid #FFD54F;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #5D4037;
+    text-align: center;
+}
+
+.instrucciones h3 {
+    color: #941528;
+    margin-bottom: 10px;
+    font-size: 20px;
 }

@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Pasteles</title>
     <link rel="stylesheet" th:href="@{/css/fragments.css}">
     <link rel="stylesheet" th:href="@{/css/catalogo.css}">
 </head>
 <body>
-    <div th:replace="~{usuario/fragments :: navbar}"></div>
+    <div th:replace="usuario/fragments :: navbar"></div>
     
     <div class="catalogo-container">
         <h1>Catálogo de Pasteles</h1>
@@ -27,6 +28,6 @@
         </ul>
     </div>
     
-    <div th:replace="~{usuario/fragments :: footer}"></div>
+    <div th:replace="usuario/fragments :: footer"></div>
 </body>
 </html>
