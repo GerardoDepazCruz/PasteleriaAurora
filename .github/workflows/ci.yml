@@ -33,8 +33,6 @@ jobs:
         run: chmod +x mvnw
 
       - name: Instalar dependencias y ejecutar pruebas
-<<<<<<< HEAD
+
         run: ./mvnw -B clean test
-=======
-        run: ./mvnw -B clean test
->>>>>>> 22b2c1ba7bcac405ec3f64b19025eee74a9f4241
+
