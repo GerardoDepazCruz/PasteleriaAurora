@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar Inventario para Historial</title>
+      <style th:replace="~{admin/fragments :: style}"></style>
     <style>
         * {
             margin: 0;
@@ -283,60 +285,42 @@
         }
     </style>
 </head>
+
 <body>
 
-<!-- Botón hamburguesa -->
-<button class="menu-hamburguesa" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+    <!-- Botón hamburguesa -->
+    <button class="menu-hamburguesa" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-<!-- Overlay -->
-<div class="menu-overlay" onclick="toggleMenu()"></div>
+    <!-- Overlay -->
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
 
-<div th:replace="~{admin/fragments :: menuVertical}"></div>
+    <div th:replace="~{admin/fragments :: menuVertical}"></div>
 
-<div class="contenido-principal">
-    <h2>Seleccione Inventario para Ver Historial</h2>
+    <div class="contenido-principal">
+        <h2>Seleccione Inventario para Ver Historial</h2>
 
-    <form th:action="@{/admin/inventario/historial}" method="post" class="form-selector">
-        <div class="icono-selector">📊</div>
-        
-        <select name="inventarioId" required>
-            <option value="" disabled selected>-- Seleccione un inventario --</option>
-            <option th:each="inv : ${inventarios}" th:value="${inv.id}" th:text="${inv.producto.nombre}"></option>
-        </select>
-        
-        <button type="submit">Ver Historial</button>
-    </form>
-</div>
+        <form th:action="@{/admin/inventario/historial}" method="post" class="form-selector">
+            <div class="icono-selector">📊</div>
 
-<div th:replace="~{admin/fragments :: footer}"></div>
+            <select name="inventarioId" required>
+                <option value="" disabled selected>-- Seleccione un inventario --</option>
+                <option th:each="inv : ${inventarios}" th:value="${inv.id}" th:text="${inv.producto.nombre}"></option>
+            </select>
 
-<script>
-    function toggleMenu() {
-        const nav = document.querySelector('nav[style*="width: 220px"]');
-        const overlay = document.querySelector('.menu-overlay');
-        
-        if (nav && overlay) {
-            nav.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-    }
+            <button type="submit">Ver Historial</button>
+        </form>
+    </div>
 
-    // Cerrar menú al hacer clic en un enlace
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuLinks = document.querySelectorAll('nav[style*="width: 220px"] a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    toggleMenu();
-                }
-            });
-        });
-    });
-</script>
+    <!-- Incluir footer -->
+    <div th:replace="~{admin/fragments :: footer}"></div>
+
+    <!-- Incluir script del menú -->
+    <script th:replace="~{admin/fragments :: menuScript}"></script>
 
 </body>
+
 </html>

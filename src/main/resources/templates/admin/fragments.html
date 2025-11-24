@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<style>
-
-    body {
-        margin: 0;
-        padding: 0;
-        transition: margin-left 0.3s ease;
-    }
-
-    body.menu-open {
-        margin-left: 220px;
-    }
-
-    .menu-hamburguesa {
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        z-index: 2000;
-        width: 35px;
-        height: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
+    <style>
+        /* Botón hamburguesa - oculto por defecto */
+        .menu-hamburguesa {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #941528;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
 
     .menu-hamburguesa span {
         display: block;
@@ -37,79 +27,41 @@
         transition: 0.3s ease;
     }
 
-    .menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.4);
-        z-index: 900;
-    }
-    .menu-overlay.active {
-        display: block;
-    }
+        /* Overlay para cerrar el menú al hacer clic fuera */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
 
 
-    nav[th\:fragment="menuVertical"] {
-        width: 220px;
-        height: 100vh;
-        background-color: #941528;
-        padding: 30px 20px;
-        position: fixed;
-        top: 0;
-        left: -220px; /* OCULTO por defecto */
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: left 0.3s ease;
-    }
+            nav[th\:fragment="menuVertical"] {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                padding-top: 80px !important; /* Espacio para la hamburguesa */
+            }
 
-    /* Cuando el menú se ABRE */
-    nav[th\:fragment="menuVertical"].active {
-        left: 0;
-    }
+            nav[th\:fragment="menuVertical"].active {
+                transform: translateX(0);
+            }
 
-
-    nav a {
-        color: white !important;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 600;
-        padding: 12px 15px;
-        border-radius: 8px;
-        transition: background 0.3s ease;
-    }
-
-    nav a:hover {
-        background-color: rgba(255,255,255,0.2);
-    }
-
-
-    footer[th\:fragment="footer"] {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: #941528;
-        padding: 15px 30px;
-        text-align: center;
-        font-weight: 600;
-        color: white;
-        border-top: 3px solid #7a1121;
-        z-index: 800;
-        transition: left 0.3s ease;
-    }
-
-    body.menu-open footer[th\:fragment="footer"] {
-        left: 220px;
-    }
-
-</style>
+            /* Ajustar footer en móvil */
+            footer[th\:fragment="footer"] {
+                left: 0 !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <!-- Botón hamburguesa -->
@@ -122,33 +74,43 @@
 <!-- Overlay -->
 <div class="menu-overlay" onclick="toggleMenu()"></div>
 
-<!-- Menú lateral -->
-<nav th:fragment="menuVertical">
-    <a th:href="@{/admin/productos}">Productos</a>
-    <a th:href="@{/admin/usuarios}">Usuarios</a>
-    <a th:href="@{/admin/pedidos}">Pedidos Personalizados</a>
-    <a th:href="@{/admin/inventario}">Inventario</a>
-    <a th:href="@{/admin/inventario/historial}">Historial de Inventario</a>
-    <a th:href="@{/logout}" style="background-color:#D95F66; margin-top:auto; text-align:center;">Cerrar Sesión</a>
+<!-- Fragmento menú vertical admin -->
+<nav th:fragment="menuVertical" style="width: 220px; height: 100vh; background-color: #941528; padding: 30px 20px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; gap: 10px; box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
+    <a th:href="@{/admin/productos}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Productos</a>
+    <a th:href="@{/admin/usuarios}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Usuarios</a>
+    <a th:href="@{/admin/pedidos}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Pedidos Personalizados</a>
+    <a th:href="@{/admin/inventario}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Inventario</a>
+    <a th:href="@{/admin/inventario/historial}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: transparent;">Historial de Inventario</a>
+    <a th:href="@{/logout}" style="color: white; text-decoration: none; font-size: 16px; font-weight: 700; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; background-color: #D95F66; text-align: center; margin-top: auto;">Cerrar Sesión</a>
 </nav>
 
-<!-- Footer -->
-<footer th:fragment="footer">
+<!-- Fragmento footer -->
+<footer th:fragment="footer" style="position: fixed; bottom: 0; left: 220px; right: 0; background-color: #941528; padding: 15px 30px; text-align: center; font-weight: 600; color: white; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); border-top: 3px solid #7a1121; z-index: 999;">
     Pastelería © 2025 - Herramientas de Desarrollo - Todos los derechos reservados
 </footer>
 
 <script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav[th\\:fragment="menuVertical"]');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
 
-function toggleMenu() {
-    const menu = document.querySelector('nav[th\\:fragment="menuVertical"]');
-    const overlay = document.querySelector('.menu-overlay');
-    
-    menu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-}
-
+    // Cerrar menú al hacer clic en un enlace (opcional, para mejor UX en móvil)
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('nav[th\\:fragment="menuVertical"] a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+    });
 </script>
 
 </body>
+
 </html>
