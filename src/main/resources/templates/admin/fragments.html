@@ -106,7 +106,7 @@
                 display: block;
             }
 
-            /* AJUSTE IMPORTANTE: Menú vertical empieza DESPUÉS del botón hamburguesa */
+            /* Menú vertical empieza DESPUÉS del botón hamburguesa */
             .menu-vertical {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
@@ -137,7 +137,7 @@
                 line-height: 1.3;
             }
 
-            /* Asegurar que el botón de cerrar sesión sea visible */
+            /* Botón de cerrar sesión visible */
             .menu-vertical a:last-child {
                 margin-top: auto;
                 background-color: #D95F66;
@@ -149,7 +149,6 @@
             }
         }
 
-        /* Para pantallas muy pequeñas - MÁS ABAJO */
         @media (max-width: 480px) {
             .admin-footer {
                 font-size: 12px !important;
@@ -157,18 +156,16 @@
                 line-height: 1.2;
             }
 
-            /* MÁS ESPACIO en móviles pequeños - AUMENTADO A 100px */
             .menu-vertical {
-                padding: 100px 15px 15px 15px !important; /* Aumentado a 100px */
+                padding: 100px 15px 15px 15px !important;
             }
         }
 
-        /* Para móviles muy pequeños - EXTRA BAJO */
         @media (max-width: 360px) {
             .menu-vertical {
-                padding: 110px 12px 12px 12px !important; /* Aún más abajo para móviles muy pequeños */
+                padding: 110px 12px 12px 12px !important;
             }
-            
+
             .menu-hamburguesa {
                 top: 15px;
                 left: 15px;
@@ -176,7 +173,6 @@
             }
         }
 
-        /* Para tablets */
         @media (min-width: 769px) and (max-width: 1024px) {
             .admin-footer {
                 left: 220px !important;
@@ -189,7 +185,17 @@
 
 <body>
 
-    <!-- Fragmento menú vertical admin - VERSION CORREGIDA -->
+    <!-- Botón hamburguesa -->
+    <button class="menu-hamburguesa" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Overlay -->
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
+
+    <!-- Menú vertical -->
     <nav th:fragment="menuVertical" class="menu-vertical"
         style="width: 220px; min-height: 100vh; background-color: #941528; padding: 30px 20px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; gap: 10px; box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); z-index: 1000; box-sizing: border-box;">
         <a th:href="@{/admin/productos}" class="menu-link">Productos</a>
@@ -200,7 +206,7 @@
         <a th:href="@{/logout}" class="menu-logout">Cerrar Sesión</a>
     </nav>
 
-    <!-- Fragmento footer -->
+    <!-- Footer -->
     <footer th:fragment="footer" class="admin-footer">
         Pastelería © 2025 - Herramientas de Desarrollo - Todos los derechos reservados
     </footer>
