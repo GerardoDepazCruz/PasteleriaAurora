@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
         * {
@@ -18,11 +20,12 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 20px;
         }
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -35,7 +38,7 @@
 
         body::after {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -185,6 +188,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="logo">🎂</div>
@@ -216,4 +220,5 @@
         <a th:href="@{/registro}" class="link-registro">Crear una cuenta</a>
     </div>
 </body>
+
 </html>

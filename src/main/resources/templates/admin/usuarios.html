@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios Registrados</title>
+      <style th:replace="~{admin/fragments :: style}"></style>
     <style>
         * {
             margin: 0;
@@ -17,6 +19,46 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Botón hamburguesa */
+        .menu-hamburguesa {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #941528;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-hamburguesa span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
         .contenido-principal {
             margin-left: 220px;
             padding: 30px;
@@ -29,6 +71,11 @@
             font-size: 30px;
             margin-bottom: 30px;
             font-weight: 700;
+        }
+
+        .tabla-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .tabla-usuarios {
@@ -49,6 +96,7 @@
             text-align: left;
             font-weight: 600;
             font-size: 14px;
+            white-space: nowrap;
         }
 
         .tabla-usuarios td {
@@ -85,9 +133,127 @@
             color: white;
         }
 
+        /* ===== RESPONSIVE MÁS GRANDE ===== */
+        @media (max-width: 768px) {
+            .menu-hamburguesa {
+                display: block;
+                top: 25px;
+                left: 25px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .menu-hamburguesa span {
+                width: 30px;
+                height: 4px;
+                margin: 6px 0;
+            }
+
+            nav[style*="width: 220px"] {
+                transform: translateX(-100%) !important;
+                transition: transform 0.3s ease !important;
+            }
+
+            nav[style*="width: 220px"].active {
+                transform: translateX(0) !important;
+            }
+
+            .contenido-principal {
+                margin-left: 0;
+                padding: 100px 25px 120px 25px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 32px;
+                margin-bottom: 35px;
+            }
+
+            .tabla-container {
+                border: 2px solid #941528;
+                border-radius: 12px;
+                padding: 5px;
+                background: white;
+            }
+
+            .tabla-usuarios th {
+                padding: 18px 16px;
+                font-size: 17px;
+                font-weight: 700;
+            }
+
+            .tabla-usuarios td {
+                padding: 16px;
+                font-size: 16px;
+                height: 60px;
+            }
+
+            .badge-rol {
+                padding: 8px 16px;
+                font-size: 14px;
+                border-radius: 15px;
+            }
+
+            footer[style*="left: 220px"] {
+                left: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contenido-principal {
+                padding: 90px 20px 120px 20px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 28px;
+            }
+
+            .tabla-usuarios th,
+            .tabla-usuarios td {
+                padding: 14px 12px;
+                font-size: 15px;
+                height: 55px;
+            }
+
+            .badge-rol {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .contenido-principal {
+                padding: 80px 15px 120px 15px;
+            }
+
+            .contenido-principal h2 {
+                font-size: 26px;
+            }
+
+            .tabla-usuarios th,
+            .tabla-usuarios td {
+                padding: 12px 10px;
+                font-size: 14px;
+                height: 50px;
+            }
+
+            .badge-rol {
+                padding: 5px 12px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
+
+<!-- Botón hamburguesa -->
+<button class="menu-hamburguesa" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Overlay -->
+<div class="menu-overlay" onclick="toggleMenu()"></div>
 
 <!-- Incluye menú vertical -->
 <div th:replace="~{admin/fragments :: menuVertical}"></div>
@@ -95,34 +261,60 @@
 <div class="contenido-principal">
     <h2>Usuarios Registrados</h2>
     
-    <!-- Tabla de usuarios -->
-    <table class="tabla-usuarios">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Nombre Completo</th>
-                <th>Email</th>
-                <th>Rol</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="usr : ${usuarios}">
-                <td th:text="${usr.id}"></td>
-                <td th:text="${usr.username}"></td>
-                <td th:text="${usr.nombreCompleto}"></td>
-                <td th:text="${usr.email}"></td>
-                <td>
-                    <span th:class="${usr.rol == 'ADMIN' ? 'badge-rol badge-admin' : 'badge-rol badge-usuario'}" 
-                          th:text="${usr.rol}"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Tabla de usuarios con scroll horizontal en móvil -->
+    <div class="tabla-container">
+        <table class="tabla-usuarios">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Nombre Completo</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usr : ${usuarios}">
+                    <td th:text="${usr.id}"></td>
+                    <td th:text="${usr.username}"></td>
+                    <td th:text="${usr.nombreCompleto}"></td>
+                    <td th:text="${usr.email}"></td>
+                    <td>
+                        <span th:class="${usr.rol == 'ADMIN' ? 'badge-rol badge-admin' : 'badge-rol badge-usuario'}" 
+                              th:text="${usr.rol}"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Incluye footer -->
 <div th:replace="~{admin/fragments :: footer}"></div>
+
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav[style*="width: 220px"]');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        if (nav && overlay) {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('nav[style*="width: 220px"] a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

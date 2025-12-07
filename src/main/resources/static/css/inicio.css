@@ -1,4 +1,4 @@
-/* Sección 1*/
+/* Sección 1 - Hero */
 .hero {
   position: relative;
   width: 100%;
@@ -74,7 +74,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Sección 2*/
+/* Sección 2 - Categorías */
 .categorias {
   padding: 60px 30px;
   text-align: center;
@@ -133,7 +133,7 @@
   text-align: center;
 }
 
-/* Sección 3*/
+/* Sección 3 - About */
 .about {
   padding: 20px 30px;
 }
@@ -170,7 +170,7 @@
 .about-text p {
   color: #991D27;
   font-size: 19px;
-  line-height: 1.8;
+  line-height: 1.8; /* INTERLINEADO SEPARADO */
   margin: 0;
 }
 
@@ -192,7 +192,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Sección 4*/
+/* Sección 4 - Crea tu pastel */
 .crea-pastel {
   position: relative;
   width: 100%;
@@ -235,7 +235,7 @@
 .crea-content p {
   color: #E1D5C7;
   font-size: 21px;
-  line-height: 1.6;
+  line-height: 1.7; /* INTERLINEADO SEPARADO */
   margin: 0 0 30px 0;
 }
 
@@ -255,7 +255,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Sección 5*/
+/* Sección 5 - Contacto */
 .contacto {
   padding: 50px 30px;
 }
@@ -271,6 +271,7 @@
 .contacto > p {
   color: #500E10;
   font-size: 16px;
+  line-height: 1.6; /* INTERLINEADO SEPARADO */
   margin: 0 0 40px 0;
   text-align: center;
 }
@@ -305,6 +306,8 @@
   font-size: 14px;
   font-family: inherit;
   color: #333;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .contacto-form input::placeholder,
@@ -327,6 +330,9 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   align-self: flex-start;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
 }
 
 .contacto-form .btn:hover {
@@ -342,4 +348,523 @@
   width: 100%;
   height: 100%;
   min-height: 400px;
+  border-radius: 10px;
+}
+
+/* ===== RESPONSIVE INICIO COMPLETO ===== */
+
+/* TABLETS (768px - 1024px) */
+@media (max-width: 1024px) {
+  /* Hero Section Tablet */
+  .hero {
+    height: 400px;
+  }
+  
+  .hero-content {
+    padding: 0 20px;
+  }
+  
+  .hero-text {
+    gap: 80px;
+  }
+  
+  .hero-image {
+    width: 350px;
+  }
+  
+  .hero-text h1 {
+    font-size: 38px;
+    margin-bottom: 25px;
+  }
+  
+  .hero-text .btn {
+    padding: 16px 60px;
+    font-size: 22px;
+  }
+  
+  /* Categorías Tablet - 2 columnas MÁS ANCHAS */
+  .categorias {
+    padding: 40px 20px;
+  }
+  
+  .categorias h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+  }
+  
+  .categoria-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px; /* MÁS SEPARACIÓN */
+    justify-items: center;
+  }
+  
+  .categoria {
+    width: 100%;
+    max-width: 320px; /* MÁS ANCHO */
+  }
+  
+  .categoria img {
+    width: 280px; /* MÁS ANCHO */
+    height: 240px; /* MÁS ALTO */
+  }
+  
+  .categoria h3 {
+    font-size: 24px;
+    font-weight: 800;
+  }
+  
+  /* About Section Tablet */
+  .about {
+    padding: 30px 20px;
+  }
+  
+  .about-content {
+    gap: 40px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .about-content img {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .about-text h2 {
+    font-size: 30px;
+  }
+  
+  .about-text p {
+    font-size: 19px;
+    line-height: 1.8; /* INTERLINEADO SEPARADO */
+  }
+  
+  .about-text .btn {
+    padding: 14px 55px;
+    font-size: 20px;
+  }
+  
+  /* Crea Pastel Tablet */
+  .crea-pastel {
+    height: 400px;
+  }
+  
+  .crea-content h2 {
+    font-size: 38px;
+  }
+  
+  .crea-content p {
+    font-size: 22px;
+    line-height: 1.8; /* INTERLINEADO SEPARADO */
+  }
+  
+  .crea-content .btn {
+    padding: 14px 70px;
+    font-size: 22px;
+  }
+  
+  /* Contacto Tablet - FORMULARIO Y MAPA MÁS ANCHOS */
+  .contacto {
+    padding: 40px 20px;
+  }
+  
+  .contacto-contenido {
+    gap: 40px;
+    flex-direction: column;
+  }
+  
+  .contacto-form,
+  .contacto-mapa {
+    width: 100%;
+    max-width: 600px; /* MÁS ANCHO */
+  }
+  
+  .contacto h2 {
+    font-size: 34px;
+  }
+  
+  .contacto > p {
+    font-size: 18px;
+    line-height: 1.7; /* INTERLINEADO SEPARADO */
+  }
+  
+  .contacto-form label {
+    font-size: 20px;
+  }
+  
+  .contacto-form input,
+  .contacto-form textarea {
+    padding: 16px;
+    font-size: 18px;
+  }
+  
+  .contacto-form .btn {
+    align-self: center;
+    width: 100%;
+    max-width: 350px; /* MÁS ANCHO */
+    padding: 18px;
+    font-size: 20px;
+  }
+  
+  .contacto-mapa iframe {
+    min-height: 400px;
+  }
+}
+
+/* MÓVILES GRANDES (481px - 767px) */
+@media (max-width: 767px) {
+  /* Hero Section Mobile */
+  .hero {
+    height: 500px;
+  }
+  
+  .hero-content {
+    padding: 0 20px;
+  }
+  
+  .hero-text {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .hero-image {
+    width: 280px;
+  }
+  
+  .hero-text h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    line-height: 1.3;
+  }
+  
+  .hero-text .btn {
+    padding: 16px 45px;
+    font-size: 20px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Categorías Mobile - 1 COLUMNA EXTRA ANCHA */
+  .categorias {
+    padding: 30px 15px;
+  }
+  
+  .categorias h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+  
+  .categoria-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .categoria {
+    width: 100%;
+    max-width: 350px; /* MUCHO MÁS ANCHO */
+  }
+  
+  .categoria img {
+    width: 320px; /* MUCHO MÁS ANCHO */
+    height: 280px; /* MUCHO MÁS ALTO */
+  }
+  
+  .categoria h3 {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  
+  /* About Section Mobile */
+  .about {
+    padding: 20px 15px;
+  }
+  
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .about-content img {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .about-text h2 {
+    font-size: 26px;
+  }
+  
+  .about-text p {
+    font-size: 18px;
+    line-height: 1.8; /* INTERLINEADO SEPARADO */
+  }
+  
+  .about-text .btn {
+    padding: 14px 45px;
+    font-size: 18px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Crea Pastel Mobile */
+  .crea-pastel {
+    height: 350px;
+  }
+  
+  .crea-content {
+    padding: 0 20px;
+  }
+  
+  .crea-content h2 {
+    font-size: 30px;
+  }
+  
+  .crea-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.7; /* INTERLINEADO SEPARADO */
+  }
+  
+  .crea-content .btn {
+    padding: 14px 45px;
+    font-size: 18px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Contacto Mobile - FORMULARIO Y MAPA MUY ANCHOS */
+  .contacto {
+    padding: 30px 15px;
+  }
+  
+  .contacto h2 {
+    font-size: 30px;
+  }
+  
+  .contacto > p {
+    font-size: 18px;
+    line-height: 1.7; /* INTERLINEADO SEPARADO */
+    margin-bottom: 35px;
+  }
+  
+  .contacto-contenido {
+    flex-direction: column;
+    gap: 45px;
+    width: 100%;
+  }
+  
+  .contacto-form,
+  .contacto-mapa {
+    width: 100%;
+    max-width: none; /* OCUPA TODO EL ANCHO */
+  }
+  
+  .contacto-form label {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  
+  .contacto-form input,
+  .contacto-form textarea {
+    padding: 18px;
+    font-size: 20px;
+    border-radius: 8px;
+  }
+  
+  .contacto-form textarea {
+    min-height: 150px;
+  }
+  
+  .contacto-form .btn {
+    width: 100%;
+    max-width: 100%; /* OCUPA TODO EL ANCHO */
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  .contacto-mapa iframe {
+    min-height: 350px;
+    width: 100%;
+  }
+}
+
+/* MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  /* Hero Section Mobile Pequeño */
+  .hero {
+    height: 450px;
+  }
+  
+  .hero-text h1 {
+    font-size: 28px;
+  }
+  
+  .hero-image {
+    width: 220px;
+  }
+  
+  .hero-text .btn {
+    font-size: 18px;
+    padding: 14px 35px;
+  }
+  
+  /* Categorías Mobile Pequeño - 1 COLUMNA MUY ANCHA */
+  .categorias h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .categoria-lista {
+    gap: 35px;
+  }
+  
+  .categoria {
+    max-width: 320px; /* MUY ANCHO */
+  }
+  
+  .categoria img {
+    width: 300px; /* MUY ANCHO */
+    height: 250px; /* MÁS ALTO */
+  }
+  
+  .categoria h3 {
+    font-size: 24px;
+  }
+  
+  /* About Section Mobile Pequeño */
+  .about-text h2 {
+    font-size: 24px;
+  }
+  
+  .about-text p {
+    font-size: 17px;
+    line-height: 1.8; /* INTERLINEADO SEPARADO */
+  }
+  
+  /* Crea Pastel Mobile Pequeño */
+  .crea-content h2 {
+    font-size: 26px;
+  }
+  
+  .crea-content p {
+    font-size: 17px;
+    line-height: 1.7; /* INTERLINEADO SEPARADO */
+  }
+  
+  /* Contacto Mobile Pequeño - FORMULARIO Y MAPA EXTRA ANCHOS */
+  .contacto h2 {
+    font-size: 26px;
+  }
+  
+  .contacto > p {
+    font-size: 17px;
+    line-height: 1.7; /* INTERLINEADO SEPARADO */
+  }
+  
+  .contacto-form input,
+  .contacto-form textarea {
+    padding: 16px;
+    font-size: 18px;
+  }
+  
+  .contacto-form label {
+    font-size: 20px;
+  }
+  
+  .contacto-form .btn {
+    padding: 18px;
+    font-size: 20px;
+  }
+  
+  .contacto-mapa iframe {
+    min-height: 400px;
+  }
+}
+
+/* MÓVILES MUY PEQUEÑOS (hasta 360px) */
+@media (max-width: 360px) {
+  /* Hero Section Móvil Muy Pequeño */
+  .hero {
+    height: 400px;
+  }
+  
+  .hero-text h1 {
+    font-size: 26px;
+  }
+  
+  .hero-image {
+    width: 180px;
+  }
+  
+  /* Categorías Móvil Muy Pequeño - 1 COLUMNA SUPER ANCHA */
+  .categoria-lista {
+    gap: 30px;
+  }
+  
+  .categoria {
+    max-width: 300px; /* SUPER ANCHO */
+  }
+  
+  .categoria img {
+    width: 280px; /* SUPER ANCHO */
+    height: 220px; /* MÁS ALTO */
+  }
+  
+  .categoria h3 {
+    font-size: 22px;
+  }
+  
+  /* About Section Móvil Muy Pequeño */
+  .about-content img {
+    max-width: 280px;
+  }
+  
+  .about-text h2 {
+    font-size: 22px;
+  }
+  
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.7; /* INTERLINEADO SEPARADO */
+  }
+  
+  /* Crea Pastel Móvil Muy Pequeño */
+  .crea-pastel {
+    height: 300px;
+  }
+  
+  .crea-content h2 {
+    font-size: 24px;
+  }
+  
+  .crea-content p {
+    font-size: 16px;
+    line-height: 1.6; /* INTERLINEADO SEPARADO */
+  }
+  
+  /* Contacto Móvil Muy Pequeño - FORMULARIO Y MAPA SUPER ANCHOS */
+  .contacto-form input,
+  .contacto-form textarea {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  .contacto-form label {
+    font-size: 18px;
+  }
+  
+  .contacto-form .btn {
+    padding: 16px;
+    font-size: 18px;
+  }
+  
+  .contacto-mapa iframe {
+    min-height: 350px;
+  }
 }
