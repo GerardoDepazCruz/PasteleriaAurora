@@ -311,6 +311,83 @@ git log --oneline
 git checkout -- <nombre_archivo>
 ```
 ---
+### 8. Imágenes Docker en GHCR
+#### **Paso 1:**
+```bash
+Primero debo crear un Personal Access Token (PAT) desde GitHub, el cual dará permisos para subir imágenes al registro GHCR. El token actúa como una contraseña segura que GitHub Actions usa para autenticarse durante el push de la imagen.
+```
+
+![paso1](img/figura1-docker.png)
+
+#### **Paso 2:**
+```bash
+Luego que se presiona la opción de tokens, debemos seleccionar el ítem que dice “Generate new token (classic)”
+```
+
+![paso2](img/figura2-docker.png)
+
+#### **Paso 3:**
+```bash
+Después nos aparece una ventana donde debemos colocar un nombre y también debemos marcar las casillas de write, read y delete packages.
+```
+
+![paso3](img/figura3-docker.png)
+
+#### **Paso 4:**
+```bash
+Luego solo debemos hacer clic en la opción de Generate Token.
+```
+
+![paso4](img/figura4-docker.png)
+
+#### **Paso 5:**
+```bash
+Ahora como se observa, nos aparece una contraseña, debemos copia esa contraseña porque luego se va a utilizar.
+```
+
+![paso5](img/figura5-docker.png)
+
+#### **Paso 6:**
+```bash
+Bien, ahora nos debemos dirigir a nuestro repositorio e ingresamos a la sección Settings → Secrets and Variables → Actions del repositorio.
+```
+
+![paso6](img/figura6-docker.png)
+
+#### **Paso 7:**
+```bash
+Ahora nos aparece una ventana para poder un nuevo secreto para evitar exponer la clave directamente en el código.
+```
+
+![paso7](img/figura7-docker.png)
+
+#### **Paso 8:**
+```bash
+Ahora aquí debemos colocar un nombre y en el apartado de secret debemos colocar el enlace que nos apareció anteriormente cuando se generó el token
+```
+
+![paso8](img/figura8-docker.png)
+
+#### **Paso 9:**
+```bash
+Como se observa, ya se creó correctamente.
+```
+
+![paso9](img/figura9-docker.png)
+
+#### **Paso 10:**
+```bash
+Ahora dentro de la carpeta de workflow vamos a crear un nuevo archivo llamado docker-ghcr.yml. Esta estructura es obligatoria para que GitHub pueda detectar los workflows correctamente. Luego de crear el archivo YAML, se realiza un commit y un push para subir el workflow al repositorio.
+```
+
+![paso10](img/figura10-docker.png)
+
+#### **Paso 11:**
+```bash
+Ahora ingresamos al github y nos dirigimos en el apartado de Pakages y como se observa, ahí nos genera el paquete con la imagen y las etiquetas.
+```
+
+![paso11](img/figura11docker.png)
 
 ## Capturas de Pantalla del progreso y uso del Github
 
