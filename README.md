@@ -311,6 +311,86 @@ git log --oneline
 git checkout -- <nombre_archivo>
 ```
 ---
+
+## Capturas de Pantalla del progreso y uso del Github
+
+### 1. commits
+
+#### Gerardo
+
+![CommitGerardo](img/commits-gerardo.png)
+
+#### Ana
+
+![CommitAna1](img/commits-ana1.png)
+![CommitAna2](img/commits-ana2.png)
+![CommitAna3](img/commits-ana3.png)
+
+#### Josue
+
+* En el repositorio de Gerardo
+![CommitJosue](img/commits-josue.png)
+
+* En el repositorio de Josue (por el uso de fork)
+![CommitJosueFork]()
+
+#### Jennifer
+
+![CommitJennifer](img/commits-jennifer.png)
+
+#### Alexander
+
+![CommitAlexander](img/commits-alexander.png)
+
+
+### 2. ramas
+
+![Ramas](img/ramas.png)
+
+### 3. PRs
+
+#### Gerardo
+
+* Rama main
+![PRsMainGerardo](img/pr-main_gerardo.png)
+
+* Rama Gerardo
+![PRsGerardo](img/pr-gerardo.png)
+
+#### Ana
+
+![PRsAnaPerez](img/pr-anaperez.png)
+![PRsAna2](img/pr-ana2.png)
+![PRsPerez](img/pr-perez.png)
+
+#### Josue
+
+* PRs en el repositorio de Gerardo
+![PRsJosue](img/pr-vega.png)
+
+* PRs en el repositorio de Josue (por el uso de fork)
+![PRsJosueFork]()
+
+#### Jennifer
+
+![PRsJennifer](img/pr-jennifer.png)
+
+#### Alexander
+
+![PRsAlexander](img/pr-alex.png)
+
+
+### 4. issues
+
+![Issues](img/issues.png)
+
+
+### 5. milestrones
+
+![Issues](img/milestrones.png)
+
+---
+
 ## Capturas de Pantalla
 
 ### **USUARIO**
