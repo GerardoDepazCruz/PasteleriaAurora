@@ -409,7 +409,8 @@ Ahora ingresamos al github y nos dirigimos en el apartado de Pakages y como se o
 ![CommitJosue](img/commits-josue.png)
 
 * En el repositorio de Josue (por el uso de fork)
-![CommitJosueFork]()
+![CommitJosueFork1](img/commits-vega-fork.jpeg)
+![CommitJosueFork2](img/commits-vega-fork2.jpeg)
 
 #### Jennifer
 
@@ -446,7 +447,7 @@ Ahora ingresamos al github y nos dirigimos en el apartado de Pakages y como se o
 ![PRsJosue](img/pr-vega.png)
 
 * PRs en el repositorio de Josue (por el uso de fork)
-![PRsJosueFork]()
+![PRsJosueFork](img/pr-vega-forkk.png)
 
 #### Jennifer
 
