@@ -21,5 +21,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/pasteleriaaurora:latest
-
+          tags: ghcr.io/${{ env.OWNER_LC }}/pasteleriaaurora:latest
+      - name: Trigger Render Deploy
+        run: |
+          echo "Ejecutando Deploy Hook de Render..."
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
