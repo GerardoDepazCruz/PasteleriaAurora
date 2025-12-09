@@ -354,7 +354,7 @@ Bien, ahora nos debemos dirigir a nuestro repositorio e ingresamos a la sección
 
 ![paso6](img/figura6-docker.png)
 
-#### **Paso 7:**
+#### **Paso 7 :**
 ```bash
 Ahora nos aparece una ventana para poder un nuevo secreto para evitar exponer la clave directamente en el código.
 ```
