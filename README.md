@@ -389,6 +389,35 @@ Ahora ingresamos al github y nos dirigimos en el apartado de Pakages y como se o
 
 ![paso11](img/figura11docker.png)
 
+#### **Paso 12:**
+```bash
+Ahora se crea el nuevo servicio, para ello debemos ingresar la url de la imagen y las credenciales.
+```
+
+![paso12](img/render1.png)
+
+#### **Paso 13:**
+```bash
+Luego se modifica el docker-ghcr.yml para agregar el deploy de render.
+```
+
+![paso13](img/render2.png)
+
+#### **Paso 14:**
+```bash
+En este paso se debe agregar la contraseña del render deploy.
+```
+
+![paso14](img/render3.png)
+
+#### **Paso 15:**
+```bash
+Como se oberva, cada vez que se hace el psuh, se actualiza el servicio de render.
+```
+
+![paso15](img/render4.png)
+
+
 ## Capturas de Pantalla del progreso y uso del Github
 
 ### 1. commits
